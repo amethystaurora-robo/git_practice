@@ -22,3 +22,34 @@ Example Output (pwd):
     1. Cadens-MacBook-Pro:CodingNomads cadenmackenzie$ pwd
        /Users/cadenmackenzie/Documents/CodingNomads
 
+Amethysts-MacBook-Air:labs ameeicher$ cd ~/Documents/CodingNomads/
+Amethysts-MacBook-Air:CodingNomads ameeicher$ touch Terminal_testing
+Amethysts-MacBook-Air:CodingNomads ameeicher$ cd ~/Documents/CodingNomads/Terminal_testing
+-bash: cd: /Users/ameeicher/Documents/CodingNomads/Terminal_testing: Not a directory
+Amethysts-MacBook-Air:CodingNomads ameeicher$ mkdir Terminal_testing
+Amethysts-MacBook-Air:CodingNomads ameeicher$ cd ~/Documents/CodingNomads/Terminal_testing
+Amethysts-MacBook-Air:Terminal_testing ameeicher$ touch animals.txt vegetables.txt minerals.txt
+Amethysts-MacBook-Air:Terminal_testing ameeicher$ pwd
+/Users/ameeicher/Documents/CodingNomads/Terminal_testing
+Amethysts-MacBook-Air:Terminal_testing ameeicher$ ls -al
+total 0
+drwxr-xr-x  5 ameeicher  staff  160 Apr  8 13:29 .
+drwxr-xr-x@ 7 ameeicher  staff  224 Apr  8 13:29 ..
+-rw-r--r--@ 1 ameeicher  staff    0 Apr  8 13:29 animals.txt
+-rw-r--r--@ 1 ameeicher  staff    0 Apr  8 13:29 minerals.txt
+-rw-r--r--@ 1 ameeicher  staff    0 Apr  8 13:29 vegetables.txt
+Amethysts-MacBook-Air:Terminal_testing ameeicher$ mkdir vegetables
+Amethysts-MacBook-Air:Terminal_testing ameeicher$ cp vegetables.txt vegetables
+Amethysts-MacBook-Air:Terminal_testing ameeicher$ mv minerals.txt vegetables
+Amethysts-MacBook-Air:Terminal_testing ameeicher$ rm vegetables.txt
+Amethysts-MacBook-Air:Terminal_testing ameeicher$ rm vegetables
+rm: vegetables: is a directory
+Amethysts-MacBook-Air:Terminal_testing ameeicher$ rm -r vegetables
+Amethysts-MacBook-Air:Terminal_testing ameeicher$ vim
+Amethysts-MacBook-Air:Terminal_testing ameeicher$ vim animals.txt
+Amethysts-MacBook-Air:Terminal_testing ameeicher$ cat animals.txt
+giraffes
+elephants
+rhinos
+
+
