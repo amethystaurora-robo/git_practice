@@ -18,6 +18,18 @@ class RelationalOperators {
         }
 
         // write your code below
+        if (a > b) {
+            System.out.println("This will never print");
+        }
+        if (a >= b) {
+            System.out.println("Similarly, this will never print");
+        }
+        if (a <= b) {
+            System.out.println("I'm the king of the world!!!");
+        }
+        if (a == b) {
+            System.out.println("a equals b");
+        }
 
     }
 
