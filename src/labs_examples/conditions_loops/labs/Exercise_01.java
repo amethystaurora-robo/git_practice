@@ -23,7 +23,14 @@ public class Exercise_01 {
         // assign input to variable as int
         int number = scanner.nextInt();
 
+
         // write completed code here
+        if (number % 2 == 1) {
+            System.out.println("Number is odd.");
+        }
+        else {
+            System.out.println("Number is even.");
+        }
 
     }
 }

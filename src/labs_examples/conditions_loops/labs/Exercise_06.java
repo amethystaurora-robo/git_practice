@@ -8,4 +8,14 @@ package labs_examples.conditions_loops.labs;
  */
 
 public class Exercise_06 {
+    public static void main(String[] args) {
+        int sum = 0;
+        int i = 0;
+        while (i < 100) {
+            int j = sum;
+            i++;
+            sum = j + i;
+        }
+        System.out.println(sum);
+    }
 }
