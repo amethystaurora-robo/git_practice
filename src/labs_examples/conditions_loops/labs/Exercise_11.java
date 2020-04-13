@@ -22,13 +22,12 @@ package labs_examples.conditions_loops.labs;
 
 public class Exercise_11 {
     public static void main(String[] args) {
-        static int multTable = 
-        for (int i = 0; i <= 10; i++) {
-            i = i*i;
-            System.out.print(i + " | ");
-            for (int j = 0; j <= 10; j++) {
-                j = j*j;
-                System.out.println(j + " | ");
+        int multTable = 0;
+        for (int i = 1; i <= 10; i++) {
+            System.out.println();
+            for (int j = 1; j <= 10; j++) {
+                multTable = j*i;
+                System.out.print(multTable  + "|");
 
             }
         }
