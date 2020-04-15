@@ -19,12 +19,18 @@ public class Exercise_03 {
 
     public static void main(String[] args) {
         int[][] twoDArray = new int[5][5];
+        int i = 0;
         // use 2 for loops to populate the 2d array
         // first for loop
-        for (int innerLoop = 1; innerLoop < twoDArray.length; innerLoop++){
-            for (int outerLoop = 0; outerLoop < twoDArray[innerLoop].length; outerLoop++){
-                twoDArray[innerLoop][outerLoop] = innerLoop * 3;
-                System.out.print(twoDArray[outerLoop][innerLoop]);
+        for (int innerLoop = 0; innerLoop < twoDArray.length; innerLoop++){
+
+            for (int outerLoop = 0; outerLoop < twoDArray[innerLoop].length; outerLoop++) {
+
+                twoDArray[innerLoop][outerLoop] = i  + 3;
+                i = twoDArray[innerLoop][outerLoop]; 
+                System.out.print(twoDArray[innerLoop][outerLoop] + " ");
+
+
             }
             System.out.println();
         }

@@ -9,5 +9,16 @@ package labs_examples.arrays.labs;
  */
 
 public class Exercise_05 {
+    public static void main(String[] args) {
+        int[] reverseArray = new int[10];
+
+        for (int i = 0; i < reverseArray.length; i++) {
+            reverseArray[i] = i * 3;
+        }
+
+        for (int j = reverseArray.length - 1; j >= 0; j-=2) {
+            System.out.println(reverseArray[j]);
+        }
+    }
 
 }
