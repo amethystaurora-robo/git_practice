@@ -1,4 +1,5 @@
 package labs_examples.arrays.labs;
+import java.util.ArrayList;
 
 /**
  *  ArrayLists
@@ -10,4 +11,16 @@ package labs_examples.arrays.labs;
  *
  */
 public class Exercise_07 {
+    public static void main(String[] args) {
+        ArrayList<String> arrayList; arrayList = new ArrayList();
+        arrayList.add("booty one ");
+        arrayList.add("booty two ");
+        arrayList.add("booty three ");
+        arrayList.add("booty four ");
+        arrayList.add("booty five ");
+
+       boolean one =  arrayList.isEmpty();
+       boolean containOo = arrayList.contains("oo");
+       System.out.print(one + " " + containOo);
+    }
 }
