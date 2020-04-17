@@ -1,5 +1,82 @@
+package labs_examples.objects_classes_methods.labs.objects;
 
 Following the example in CarExample.java, please use Object Composition to model an Airplane class.
 The Airplane class must be composed of at least 4 other classes (as well as any primitive types you'd like).
 The Airplane class itself should have a fuel capacity (double) variable, as well as a currentFuelLevel variable.
 We'll use these a bit later.
+
+
+    public static void main(String[] args) {
+        Color color = new Color("blue");
+         Specs specs = new Specs(true, false, true);
+                    Type type = new Type("Boeing", "747");
+                    Measurements measurements = new Measurements(300, 400, 400);
+                    Airplane myplane = new Airplane(30, 15.3, color, specs, type, measurements);
+
+    }
+
+public class Airplane {
+    Color color;
+    Specs specs;
+    Type type;
+    Measurements measurements;
+
+
+public Airplane(double fuelCapacity, double currentFuelLevel, Color color, Specs specs, Type type, Measurements measurements) {
+            this.color = color;
+            this.specs = specs;
+            this.type = type;
+            this.measurements = measurements;
+            this.fuelCapacity = fuelCapacity;
+            this.currentFuelLevel = currentFuelLevel;
+
+        }
+}
+
+public class Color {
+    String color;
+
+    public Color (String color) {
+        this.color = color;
+    }
+}
+
+public class Specs {
+
+    boolean isGas;
+    boolean isJet;
+    boolean requiresCommercialLicense;
+
+    public Specs(boolean isGas, boolean isJet, boolean requiresCommercialLicense) {
+        this.isGas = isGas;
+        this.isJet = isJet;
+        this.requiresCommercialLicense = requiresCommercialLicense;
+    }
+}
+
+public class Type {
+
+    //instance variables
+    String brand;
+    String number;
+
+    public Type(String brand, String number) {
+        this.brand = brand;
+        this.number = number;
+
+    }
+}
+
+public class Measurements {
+
+    double wingspan;
+    double width;
+    double height;
+
+    public Measurements (double wingspan, double width, double height) {
+        this.wingspan = wingspan;
+        this.width = width;
+        this.height = height;
+
+    }
+}
