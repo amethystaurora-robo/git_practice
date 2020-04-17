@@ -5,24 +5,26 @@ The Airplane class must be composed of at least 4 other classes (as well as any 
 The Airplane class itself should have a fuel capacity (double) variable, as well as a currentFuelLevel variable.
 We'll use these a bit later.
 
-
+class ObjectComp {
     public static void main(String[] args) {
         Color color = new Color("blue");
-         Specs specs = new Specs(true, false, true);
-                    Type type = new Type("Boeing", "747");
-                    Measurements measurements = new Measurements(300, 400, 400);
-                    Airplane myplane = new Airplane(30, 15.3, color, specs, type, measurements);
+        Specs specs = new Specs(true, false, true);
+        Type type = new Type("Boeing", "747");
+        Measurements measurements = new Measurements(300, 400, 400);
+        Airplane myplane = new Airplane(30, 15.3, color, specs, type, measurements);
 
     }
+}
 
 public class Airplane {
+
     Color color;
     Specs specs;
     Type type;
     Measurements measurements;
 
 
-public Airplane(double fuelCapacity, double currentFuelLevel, Color color, Specs specs, Type type, Measurements measurements) {
+    public Airplane (double fuelCapacity, double currentFuelLevel, Color color, Specs specs, Type type, Measurements measurements) {
             this.color = color;
             this.specs = specs;
             this.type = type;
