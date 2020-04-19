@@ -2,11 +2,33 @@ package labs_examples.objects_classes_methods.labs.objects;
 
 class ObjectComp {
     public static void main(String[] args) {
-        Color color = new Color("blue");
-        Specs specs = new Specs(true, false, true);
-        Type type = new Type("Boeing", "747");
-        Measurements measurements = new Measurements(300, 400, 400);
+        //objects
+        Color color = new Color();
+        Specs specs = new Specs();
+        Type type = new Type();
+        Measurements measurements = new Measurements();
         Airplane myplane = new Airplane(30, 15.3, color, specs, type, measurements);
+
+        //methods
+        color.setColor("blue");
+        color.getColor();
+
+        specs.setSpecs(true, false, true);
+        specs.getSpecs();
+
+        type.setType("Boeing", "747");
+        type.getType();
+
+        measurements.setMeasurements(3.3, 4.5, 5.7);
+        measurements.getMeasurements();
+
+        color.toString();
+        specs.toString();
+        type.toString();
+        measurements.toString();
+
+
+
 
     }
 
@@ -15,12 +37,12 @@ class ObjectComp {
 
 public class Airplane {
 
-    Color color;
-    Specs specs;
-    Type type;
-    Measurements measurements;
-    double fuelCapacity;
-    double currentFuelLevel;
+    private Color color;
+    private Specs specs;
+    private Type type;
+    private  Measurements measurements;
+    private double fuelCapacity;
+    private double currentFuelLevel;
 
 
     public Airplane (double fuelCapacity, double currentFuelLevel, Color color, Specs specs, Type type, Measurements measurements) {
@@ -47,11 +69,16 @@ public class Airplane {
 }
 
  class Color {
-    String color;
+     private String color;
 
-    public Color (String color) {
-        this.color = color;
+
+    public String getColor() {
+        return color;
     }
+
+     public void setColor(String color) {
+         this.color = color;
+     }
 
      @Override
      public String toString() {
@@ -62,11 +89,17 @@ public class Airplane {
  }
  class Specs {
 
-    boolean isGas;
-    boolean isJet;
-    boolean requiresCommercialLicense;
+     private boolean isGas;
+     private boolean isJet;
+     private boolean requiresCommercialLicense;
 
-    public Specs(boolean isGas, boolean isJet, boolean requiresCommercialLicense) {
+     public void getSpecs() {
+         System.out.println("Does the system run on gas?" + this.isGas +
+                 "Is the plane a jet?" + this.isJet + "Does the plane require " +
+                 "a commercial license?" + this.requiresCommercialLicense);
+     }
+
+    public void setSpecs(boolean isGas, boolean isJet, boolean requiresCommercialLicense) {
         this.isGas = isGas;
         this.isJet = isJet;
         this.requiresCommercialLicense = requiresCommercialLicense;
@@ -85,13 +118,17 @@ public class Airplane {
  class Type {
 
     //instance variables
-    String brand;
-    String number;
+    private String brand;
+    private String number;
 
-    public Type(String brand, String number) {
+
+     public String getType() {
+         return this.brand + this.number;
+     }
+
+    public void setType(String brand, String number) {
         this.brand = brand;
         this.number = number;
-
     }
 
      @Override
@@ -105,11 +142,15 @@ public class Airplane {
 
  class Measurements {
 
-    double wingspan;
-    double width;
-    double height;
+     private double wingspan;
+     private double width;
+     private double height;
 
-    Measurements (double wingspan, double width, double height) {
+     public double getMeasurements() {
+         return this.wingspan + this.width + this.height;
+     }
+
+    public void setMeasurements (double wingspan, double width, double height) {
         this.wingspan = wingspan;
         this.width = width;
         this.height = height;
