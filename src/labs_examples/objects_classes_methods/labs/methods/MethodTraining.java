@@ -1,6 +1,8 @@
 package labs_examples.objects_classes_methods.labs.methods;
 
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MethodTraining {
     public static void main(String[] args) {
@@ -9,6 +11,8 @@ public class MethodTraining {
         AsciiArt asciiArt = new AsciiArt();
         IsNumberPrime isNumberPrime = new IsNumberPrime();
         HighLowArray highLowArray = new HighLowArray();
+        ReverseArray reverseArray = new ReverseArray();
+        DivisorList divisorList = new DivisorList();
 
         largestNum.setlargestNum(3, 30, 300, 500);
         int a = largestNum.getlargestNum();
@@ -24,6 +28,13 @@ public class MethodTraining {
 
         highLowArray.getHighLowArray(new int[]{5, 7, 30});
 
+        reverseArray.setReverseArray();
+
+        int i = divisorList.DivisorList(50, 16, 32);
+
+        System.out.println(i);
+
+
 
 
     }
@@ -31,6 +42,7 @@ public class MethodTraining {
 
 
 class LargestNum {
+    //pass by values, each value is changed below without affecting the original variables
     private int a;
     private int b;
     private int c;
@@ -133,6 +145,57 @@ class HighLowArray {
             System.out.println(highLowArray[i]);
         }
 
+    }
+}
+
+class ReverseArray {
+    List<String> reverseArray = new ArrayList(Arrays.asList("hi", "my", "name", "is", "Monday"));
+    String holdNum;
+
+    public void setReverseArray() {
+        for(int i = 0; i < reverseArray.size(); i++) {
+            holdNum = String.valueOf(reverseArray.get(i));
+            reverseArray.remove(i);
+            reverseArray.add(0, holdNum);
+
+        }
+        for(int i = 0; i < reverseArray.size(); i++) {
+            System.out.println(reverseArray.get(i));
+        }
+    }
+}
+
+class DivisorList {
+    private int maxNum;
+    private int divisor1;
+    private int divisor2;
+
+    //pass by reference. The list is modified from its original version in the method below
+    public List<Integer> divisorList = new ArrayList();
+
+    public int DivisorList(int maxNum, int divisor1, int divisor2) {
+        int count = 1;
+        while(count < maxNum) {
+            if(divisor1 % count == 0 && divisor2 % count == 0) {
+                divisorList.add(count);
+            }
+            count++;
+        }
+
+        return divisorList.size();
+    }
+
+    //method overloading
+    public int DivisorList(int maxNum, int divisor1, int divisor2, int divisor3) {
+        int count = 1;
+        while(count < maxNum) {
+            if(divisor1 % count == 0 && divisor2 % count == 0 && divisor3 % count ==0) {
+                divisorList.add(count);
+            }
+            count++;
+        }
+
+        return divisorList.size();
     }
 }
 
