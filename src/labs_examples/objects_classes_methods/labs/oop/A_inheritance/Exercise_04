@@ -1,6 +1,10 @@
 
 Without running the code below, please tell me what it will print.
 
+Parent called will print because the Parent object is called. If it said,
+for example, Child a = new Child();, the dosomething method from the child
+class would print
+
 
 
 public class InheritanceTest

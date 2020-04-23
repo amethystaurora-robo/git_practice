@@ -1,7 +1,8 @@
 
 Without running the code below, please tell me what will print. Why?
 
-
+First, "parent called" will print followed by "child called". This is
+because the parent class is accessed before the child class.
 
 
 public class InheritanceTest
