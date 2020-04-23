@@ -10,9 +10,27 @@ package labs_examples.objects_classes_methods.labs.methods;
 public class Exercise_04 {
 
     public static void main(String[] args) {
-//        int x = factorial(5);
-//        System.out.println(x);
+        Factorial findfactorial = new Factorial();
+       long x = findfactorial.factorial(9);
+       System.out.println(x);
     }
+
+ static class Factorial {
+        public long factorial(int userNum) {
+            if (userNum == 1) {
+                return 1;
+            }
+            else if (userNum > 1) {
+                return userNum * factorial(userNum-1);
+            }
+            else {
+                return -1;
+            }
+
+        }
+
+
+}
 
 
 
