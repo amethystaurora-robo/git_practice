@@ -10,6 +10,11 @@ public class Animals {
     String genus;
     String species;
 
+    public static void main(String[] args) {
+        Vertebrates vertebrates = new Vertebrates();
+        
+    }
+
     public boolean getIsVertebrate() {
         if(isVertebrate == true) {
             return true;
@@ -141,8 +146,44 @@ class order extends animalClass {
                 break;
             }
             System.out.println("That's all the birds I know. You win.");
-
         }
+    }
+    public void findFishOrder() {
+        String[] edibleFishArray = {"tilapia", "barracuda", "anchovie", "tuna", "salmon", "bass", "catfish"
+        "cod", "eel", "flounder", "grouper", "herring", "sardine", "shark", "swordfish", "trout"};
+        String[] petFishArray = {"catfish", "tetra", "piranha", "shark", "clownfish", "angelfish", "betta", "goldfish",
+        "angelfish", "pufferfish", "barb", "koi", "guppy", "minnow", "eel", "stingray"};
+        System.out.println("Is it a fish you eat?");
+        getUserInput();
+        if (getUserInput().equalsIgnoreCase("yes")) {
+            for(int i = 0; i < edibleFishArray.length; i++) {
+                System.out.println("Is the bird a " + edibleFishArray[i]);
+                getUserInput();
+                if (getUserInput().equalsIgnoreCase("yes")) {
+                    System.out.println("Yay. I solved it.");
+                    break;
+                }
+            }
+        }
+        else if (getUserInput().equalsIgnoreCase("no")) {
+            System.out.println("Is the fish a pet?");
+            getUserInput();
+            if(getUserInput().equalsIgnoreCase("yes")) {
+                for (int i = 0; i < petFishArray.length; i++) {
+                    System.out.println("Is the fish a " + petFishArray[i]);
+                    getUserInput();
+                    if (getUserInput().equalsIgnoreCase("yes")) {
+                        System.out.println("Yay. I solved it.");
+                        break;
+                    }
+                }
+            }
+            else {
+                System.out.println("That's all the fish I know. You win.");
+            }
+        }
+
+
     }
 }
 
