@@ -12,7 +12,7 @@ public class Animals {
 
     public static void main(String[] args) {
         Vertebrates vertebrates = new Vertebrates();
-        
+
     }
 
     public boolean getIsVertebrate() {
@@ -75,6 +75,19 @@ public class Animals {
         return b;
 
     }
+
+    public void findAnimalOrder(String[] animalList, String animalType) {
+        for(int i = 0; i < animalList.length; i++) {
+            System.out.println("Is the bird a " + animalList[i]);
+            getUserInput();
+            if (getUserInput().equalsIgnoreCase("yes")) {
+                System.out.println("Yay. I solved it");
+                break;
+            }
+            System.out.println("That's all the " + animalType + "s I know. You win.");
+        }
+
+    }
 }
 
 class Vertebrates extends Animals {
@@ -97,7 +110,7 @@ class Vertebrates extends Animals {
 class animalClass extends Vertebrates {
     public void findClass(String userAnswer) {
         System.out.println("Please answer yes or no for the following:");
-        ArrayList<String> answerList = new ArrayList<>;
+        ArrayList<String> answerList = new ArrayList<>();
         System.out.println("Is the animal a fish?");
         System.out.println("Is the animal a bird?");
         System.out.println("Is the animal a mammal?");
@@ -135,55 +148,74 @@ class animalClass extends Vertebrates {
 }
 
 class order extends animalClass {
+
     public void findBirdOrder() {
         String[] birdArray = {"parrot", "owl", "flamingo", "duck", "goose", "chicken", "dove",
                 "sparrow", "penguin", "seagull", "turkey", "eagle", "hawk", "woodpecker", "swan", "ostrich"};
-        for(int i = 0; i < birdArray.length; i++) {
-            System.out.println("Is the bird a " + birdArray[i]);
-            getUserInput();
-            if (getUserInput().equalsIgnoreCase("yes")) {
-                System.out.println("Yay. I solved it");
-                break;
-            }
-            System.out.println("That's all the birds I know. You win.");
-        }
+        findAnimalOrder(birdArray, "bird");
     }
+
     public void findFishOrder() {
-        String[] edibleFishArray = {"tilapia", "barracuda", "anchovie", "tuna", "salmon", "bass", "catfish"
+        String[] edibleFishArray = {"tilapia", "barracuda", "anchovie", "tuna", "salmon", "bass", "catfish",
         "cod", "eel", "flounder", "grouper", "herring", "sardine", "shark", "swordfish", "trout"};
         String[] petFishArray = {"catfish", "tetra", "piranha", "shark", "clownfish", "angelfish", "betta", "goldfish",
         "angelfish", "pufferfish", "barb", "koi", "guppy", "minnow", "eel", "stingray"};
         System.out.println("Is it a fish you eat?");
         getUserInput();
         if (getUserInput().equalsIgnoreCase("yes")) {
-            for(int i = 0; i < edibleFishArray.length; i++) {
-                System.out.println("Is the bird a " + edibleFishArray[i]);
-                getUserInput();
-                if (getUserInput().equalsIgnoreCase("yes")) {
-                    System.out.println("Yay. I solved it.");
-                    break;
-                }
-            }
+            findAnimalOrder(edibleFishArray, "fish");
         }
         else if (getUserInput().equalsIgnoreCase("no")) {
             System.out.println("Is the fish a pet?");
             getUserInput();
             if(getUserInput().equalsIgnoreCase("yes")) {
-                for (int i = 0; i < petFishArray.length; i++) {
-                    System.out.println("Is the fish a " + petFishArray[i]);
-                    getUserInput();
-                    if (getUserInput().equalsIgnoreCase("yes")) {
-                        System.out.println("Yay. I solved it.");
-                        break;
-                    }
-                }
-            }
+                findAnimalOrder(petFishArray, "fish"); }
             else {
-                System.out.println("That's all the fish I know. You win.");
+                System.out.println("That's all the fish I know. You win."); }
+        }
+    }
+
+    public void findReptileOrder() {
+        String[] lizardArray = {"komodo dragon", "bearded dragon", "gila monster", "chameleon", "collared lizard",
+        "gecko", "horned lizard", "legless lizard", "monitor"};
+        String[] snakeArray = {"boa", "anaconda", "cobra", "python", "mamba", "viper", "sea snake", "rattlesnake",
+        "kingsnake", "garter snake"};
+        String[] otherReptileArray = {"dinosaur", "turtle", "crocodile", "alligator", "tortoise"};
+        System.out.println("Is it a snake?");
+        getUserInput();
+        if (getUserInput().equalsIgnoreCase("yes")) {
+            findAnimalOrder(snakeArray, "snake");
+        }
+        else if (getUserInput().equalsIgnoreCase("no")) {
+            System.out.println("Is it a lizard?");
+            if (getUserInput().equalsIgnoreCase("yes")) {
+                findAnimalOrder(lizardArray, "lizard"); }
+            else if (getUserInput().equalsIgnoreCase("no")) {
+                findAnimalOrder(otherReptileArray, "reptile");
             }
         }
+        else {
+            System.out.println("That's all the reptiles I know. You win.");
+        }
 
+    }
 
+    public void findAmphibianOrder() {
+        System.out.println("Is it a frog?");
+        getUserInput();
+        if (getUserInput().equalsIgnoreCase("yes")) {
+            System.out.println("Yay. I got it.");
+        }
+        else {
+            System.out.println("Is it a salamander?");
+            getUserInput();
+            if (getUserInput().equalsIgnoreCase("yes")) {
+                System.out.println("Yay. I got it.");
+            }
+            else {
+                System.out.println("That's all the amphibians I know. You win.")
+            }
+        }
     }
 }
 
