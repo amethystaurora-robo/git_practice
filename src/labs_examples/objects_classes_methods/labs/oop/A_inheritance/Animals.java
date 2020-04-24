@@ -92,30 +92,58 @@ class Vertebrates extends Animals {
 class animalClass extends Vertebrates {
     public void findClass(String userAnswer) {
         System.out.println("Please answer yes or no for the following:");
+        ArrayList<String> answerList = new ArrayList<>;
         System.out.println("Is the animal a fish?");
-        userAnswer = getUserInput();
-        switch (userAnswer) {
-            case "yesFish":
-                userAnswer.equalsIgnoreCase("yes");
-                animalClass = "fish";
-                break;
-            case "noFish":
-                userAnswer.equalsIgnoreCase("no");
-                break;
-        }
         System.out.println("Is the animal a bird?");
-        userAnswer = getUserInput();
-        switch (userAnswer) {
-            
-        }
         System.out.println("Is the animal a mammal?");
         System.out.println("Is the animal a reptile");
         System.out.println("Is the animal an amphibian");
+        for (int i = 0; i < 5; i++) {
+            userAnswer = getUserInput();
+            answerList.add(userAnswer);
+        }
+        switch (userAnswer) {
+            case "fish":
+                answerList.get(0).equalsIgnoreCase("yes");
+                animalClass = "fish";
+                break;
+            case "bird":
+                answerList.get(1).equalsIgnoreCase("yes");
+                animalClass = "bird";
+                break;
+            case "mammal":
+                answerList.get(2).equalsIgnoreCase("yes");
+                animalClass = "mammal";
+                break;
+            case "reptile":
+                answerList.get(3).equalsIgnoreCase("yes");
+                animalClass = "reptile";
+                break;
+            case "amphibian":
+                answerList.get(4).equalsIgnoreCase("yes");
+                animalClass = "amphibian";
+                break;
+            default:
+                System.out.println("Please answer yes to at least one of the options above");
+        }
     }
 }
 
 class order extends animalClass {
+    public void findBirdOrder() {
+        String[] birdArray = {"parrot", "owl", "flamingo", "duck", "goose", "chicken", "dove",
+                "sparrow", "penguin", "seagull", "turkey", "eagle", "hawk", "woodpecker", "swan", "ostrich"};
+        for(int i = 0; i < birdArray.length; i++) {
+            System.out.println("Is the bird a " + birdArray[i]);
+            getUserInput();
+            if (getUserInput().equalsIgnoreCase("yes")) {
+                System.out.println("Yay. I solved it");
+                break;
+            }
+            System.out.println("That's all the birds I know. You win.");
 
+        }
+    }
 }
 
 class family extends order {
