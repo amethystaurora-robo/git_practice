@@ -78,15 +78,28 @@ public class Animals {
 
     public void findAnimalOrder(String[] animalList, String animalType) {
         for(int i = 0; i < animalList.length; i++) {
-            System.out.println("Is the bird a " + animalList[i]);
+            System.out.println("Is it a " + animalList[i]);
             getUserInput();
             if (getUserInput().equalsIgnoreCase("yes")) {
                 System.out.println("Yay. I solved it");
                 break;
             }
-            System.out.println("That's all the " + animalType + "s I know. You win.");
         }
+        System.out.println("That's all the " + animalType + " I know. You win.");
 
+    }
+
+    public void findMammalOrder(String[] animalList) {
+        for(int i = 0; i < animalList.length; i++) {
+            System.out.println("Is it a " + animalList[i]);
+            getUserInput();
+            if (getUserInput().equalsIgnoreCase("yes")) {
+                System.out.println("Great. Let's narrow that down");
+                break;
+            }
+
+        }
+        System.out.println("That's all the mammal types I know. You win.");
     }
 }
 
@@ -152,7 +165,7 @@ class order extends animalClass {
     public void findBirdOrder() {
         String[] birdArray = {"parrot", "owl", "flamingo", "duck", "goose", "chicken", "dove",
                 "sparrow", "penguin", "seagull", "turkey", "eagle", "hawk", "woodpecker", "swan", "ostrich"};
-        findAnimalOrder(birdArray, "bird");
+        findAnimalOrder(birdArray, "birds");
     }
 
     public void findFishOrder() {
@@ -184,14 +197,14 @@ class order extends animalClass {
         System.out.println("Is it a snake?");
         getUserInput();
         if (getUserInput().equalsIgnoreCase("yes")) {
-            findAnimalOrder(snakeArray, "snake");
+            findAnimalOrder(snakeArray, "snakes");
         }
         else if (getUserInput().equalsIgnoreCase("no")) {
             System.out.println("Is it a lizard?");
             if (getUserInput().equalsIgnoreCase("yes")) {
-                findAnimalOrder(lizardArray, "lizard"); }
+                findAnimalOrder(lizardArray, "lizards"); }
             else if (getUserInput().equalsIgnoreCase("no")) {
-                findAnimalOrder(otherReptileArray, "reptile");
+                findAnimalOrder(otherReptileArray, "reptiles");
             }
         }
         else {
@@ -201,25 +214,61 @@ class order extends animalClass {
     }
 
     public void findAmphibianOrder() {
-        System.out.println("Is it a frog?");
-        getUserInput();
-        if (getUserInput().equalsIgnoreCase("yes")) {
-            System.out.println("Yay. I got it.");
-        }
-        else {
-            System.out.println("Is it a salamander?");
-            getUserInput();
-            if (getUserInput().equalsIgnoreCase("yes")) {
-                System.out.println("Yay. I got it.");
-            }
-            else {
-                System.out.println("That's all the amphibians I know. You win.")
-            }
-        }
+        String[] amphibianArray = {"salamander", "frog", "toad"};
+        findAnimalOrder(amphibianArray, "amphibians");
+    }
+
+    public  void findMammalOrder() {
+        String[] mammalArray = {"carnivore", "rodent", "primate", "sea animal", "n Australian animal",
+                "animal with horns, antlers, or tusks", "spiky or armored animal"};
+        findAnimalOrder(mammalArray, "mammals");
     }
 }
 
 class family extends order {
+//anteater, sloth, skunk, rabbit, fox, bat, mongoose, weasel,
+// red panda, beaver, opossum, badger,"zebra", "horse", camel, hippo
+    public void findCarnivoreFamily() {
+        String[] carnivoreArray = {"cats", "dogs", "bears", "animal living in or near the ocean", "other"};
+
+    }
+
+    public void findRodentFamily() {
+        String[] rodentArray = {"squirrel", "rat", "mouse", "groundhog", "meerkat", "prairie dog", "capybara",
+        "hamster", "chinchilla", "beaver", "gerbil", "guinea pig", "mole"};
+
+    }
+
+    public void findPrimateFamily() {
+        String[] primateArray = {"ape", "monkey", "lemur", "tarsier"};
+        String[] apeArray = {"human", "gorilla", "orangutan", "chimpanzee", "gibbon"};
+        String[] monkeyArray = {"mandril", "macaque", "capuchin", "baboon", "spider monkey",
+                "howler monkey", "squirrel monkey"};
+
+    }
+
+    public void findSeaAnimalFamily() {
+        String[] seaAnimalArray = {"walrus", "seal", "sea lion", "manatee", "platypus", "beaver", "whale",
+        "dolphin", "porpoise", "hippo", "otter", "porpoise", "narwhal"};
+
+    }
+
+    public void findAustralianFamily() {
+        String[] australianArray = {"kangaroo", "wallaby", "wombat", "koala bear", "platypus", "tasmanian devil",
+        "sugar glider"};
+
+    }
+
+    public void findHerbivoreFamily() {
+        String[] herbivoreArray = {"giraffe", "elephant", "cow", "buffalo", "rhino", "deer", "goat", "sheep",
+                 "wildebeest", "moose", "caribou", "reindeer", "gazelle", "elk", "antelope"};
+        };
+
+    }
+
+    public void findSpikyFamily() {
+        String[] spikyAray = {"hedgehog", "armadillo", "pangolin", "porcupine", "echidna"};
+    }
 
 }
 
