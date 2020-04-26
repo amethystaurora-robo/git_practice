@@ -12,6 +12,10 @@ public class Animals {
 
     public static void main(String[] args) {
         Vertebrates vertebrates = new Vertebrates();
+        getUserInput();
+        if (getIsVertebrate == false) {
+            System.out.println("You got me. I don't know any invertebrates.");
+        }
 
     }
 
@@ -24,7 +28,7 @@ public class Animals {
         }
     }
 
-    public void setIsVertebrate(boolean isVertebrate) {
+    public void setIsVertebrate(String userInput) {
        this.isVertebrate = isVertebrate;
     }
 
@@ -219,17 +223,17 @@ class order extends animalClass {
     }
 
     public  void findMammalOrder() {
-        String[] mammalArray = {"carnivore", "rodent", "primate", "sea animal", "n Australian animal",
-                "animal with horns, antlers, or tusks", "spiky or armored animal"};
+        String[] mammalArray = {"rodent", "primate", "sea animal", "n Australian animal",
+                "animal with horns, antlers, or tusks", "spiky or armored animal",
+                "carnivore (not one of the above)", "other"};
         findAnimalOrder(mammalArray, "mammals");
     }
 }
 
 class family extends order {
-//anteater, sloth, skunk, rabbit, fox, bat, mongoose, weasel,
-// red panda, beaver, opossum, badger,"zebra", "horse", camel, hippo
+
     public void findCarnivoreFamily() {
-        String[] carnivoreArray = {"cats", "dogs", "bears", "animal living in or near the ocean", "other"};
+        String[] carnivoreArray = {"cats", "dogs", "bears", "other"};
 
     }
 
@@ -262,12 +266,15 @@ class family extends order {
     public void findHerbivoreFamily() {
         String[] herbivoreArray = {"giraffe", "elephant", "cow", "buffalo", "rhino", "deer", "goat", "sheep",
                  "wildebeest", "moose", "caribou", "reindeer", "gazelle", "elk", "antelope"};
-        };
 
     }
 
     public void findSpikyFamily() {
-        String[] spikyAray = {"hedgehog", "armadillo", "pangolin", "porcupine", "echidna"};
+        String[] spikyArray = {"hedgehog", "armadillo", "pangolin", "porcupine", "echidna"};
+    }
+
+    public void findOtherFamily() {
+        String[] otherFamilyArray = {};
     }
 
 }
