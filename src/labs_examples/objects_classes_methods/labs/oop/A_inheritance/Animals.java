@@ -12,10 +12,12 @@ public class Animals {
 
     public static void main(String[] args) {
         Vertebrates vertebrates = new Vertebrates();
-        getUserInput();
-        if (getIsVertebrate == false) {
-            System.out.println("You got me. I don't know any invertebrates.");
-        }
+
+       // String userInput = getUserInput();
+        //if (getIsVertebrate == false) {
+           // System.out.println("You got me. I don't know any invertebrates.");
+       // }
+
 
     }
 
@@ -167,9 +169,20 @@ class animalClass extends Vertebrates {
 class order extends animalClass {
 
     public void findBirdOrder() {
-        String[] birdArray = {"parrot", "owl", "flamingo", "duck", "goose", "chicken", "dove",
-                "sparrow", "penguin", "seagull", "turkey", "eagle", "hawk", "woodpecker", "swan", "ostrich"};
-        findAnimalOrder(birdArray, "birds");
+        String[] otherBirdArray = { "chicken", "sparrow", "woodpecker", "pigeon", "crow", "raven", "magpie",
+                "mockingbird", "blackbird", "hummingbird", "bluebird", "swallow",  "cuckoo", "bluejay",
+                "cardinal", "wren", "nightingale", "quail", "guineafowl", "swan"};
+        String[] bigBirdArray = {"flamingo", "penguin", "kiwi", "emu", "ostrich", "stork", "crane", "ibis",
+                "stork"};
+        String[] colorfulBirdArray = {"parrot", "bird of paradise", "robin", "finch", "toucan", "parakeet",
+                "lorikeet", "macaw", "cockatoo", "lovebird"};
+        String[] seaBirdArray = {"seagull", "puffin", "booby", "cormorant", "albatross", "pelican", "penguin",
+                "tern"};
+        String[] gameBirdArray = {"grouse", "turkey", "pheasant", "goose", "partridge", "quail", "goose",
+                "dove", "crane", "snipe", "duck"};
+        String[] birdofPreyArray = {"owl", "eagle", "hawk", "falcon,", "osprey", "vulture", "buzzard", "kite",
+                "condor"};
+        findAnimalOrder(otherBirdArray, "birds");
     }
 
     public void findFishOrder() {
