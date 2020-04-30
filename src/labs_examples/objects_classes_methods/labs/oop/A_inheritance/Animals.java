@@ -197,13 +197,14 @@ class family extends order {
 
     public void findCarnivoreFamily() {
         String[] carnivoreArray = {"cats", "dogs", "bears", "other"};
-        findAnimalOrder(carnivoreArray, "")
+        findMammalOrder(carnivoreArray, "carnivore");
 
     }
 
     public void findRodentFamily() {
         String[] rodentArray = {"squirrel", "rat", "mouse", "groundhog", "meerkat", "prairie dog", "capybara",
         "hamster", "chinchilla", "beaver", "gerbil", "guinea pig", "mole"};
+        findMammalOrder(rodentArray, "rodent");
 
     }
 
@@ -212,29 +213,37 @@ class family extends order {
         String[] apeArray = {"human", "gorilla", "orangutan", "chimpanzee", "gibbon"};
         String[] monkeyArray = {"mandril", "macaque", "capuchin", "baboon", "spider monkey",
                 "howler monkey", "squirrel monkey"};
+        findMammalOrder(primateArray, "primates");
+        findMammalOrder(apeArray, "apes");
+        findMammalOrder(monkeyArray, "monkeys");
 
     }
 
     public void findSeaAnimalFamily() {
         String[] seaAnimalArray = {"walrus", "seal", "sea lion", "manatee", "platypus", "beaver", "whale",
         "dolphin", "porpoise", "hippo", "otter", "porpoise", "narwhal"};
+        findMammalOrder(seaAnimalArray, "sea animals");
 
     }
 
     public void findAustralianFamily() {
         String[] australianArray = {"kangaroo", "wallaby", "wombat", "koala bear", "platypus", "tasmanian devil",
         "sugar glider"};
+        findMammalOrder(australianArray, "australian animals");
 
     }
 
     public void findHerbivoreFamily() {
         String[] herbivoreArray = {"giraffe", "elephant", "cow", "buffalo", "rhino", "deer", "goat", "sheep",
                  "wildebeest", "moose", "caribou", "reindeer", "gazelle", "elk", "antelope"};
+        findMammalOrder(herbivoreArray, "herbivores");
+
 
     }
 
     public void findSpikyFamily() {
         String[] spikyArray = {"hedgehog", "armadillo", "pangolin", "porcupine", "echidna"};
+        findMammalOrder(spikyArray, "spiky or armored animal");
     }
 
     public void findOtherFamily() {
