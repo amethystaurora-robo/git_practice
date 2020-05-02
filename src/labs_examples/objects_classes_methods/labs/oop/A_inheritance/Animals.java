@@ -7,15 +7,35 @@ public class Animals {
     String animalClass;
     String order;
     String family;
-    String genus;
-    String species;
 
     public static void main(String[] args) {
         Vertebrates vertebrates = new Vertebrates();
+        animalClass animalClass1 = new animalClass();
         order orders = new order();
         family families = new family();
 
+       boolean isAVertebrate = vertebrates.findPhylum("yes");
+       if (isAVertebrate == true) {
+            String whatKindIsIt = animalClass1.findAnimalClass();
+           if (whatKindIsIt == "bird") {
 
+           }
+           else if (whatKindIsIt == "fish") {
+
+           }
+           else if (whatKindIsIt == "reptile") {
+
+           }
+           else if (whatKindIsIt == "amphibian") {
+
+           }
+           else {
+
+           }
+       }
+        else {
+           System.out.println("You got me. I don't know any invertebrates");
+       }
 
     }
 
@@ -24,7 +44,6 @@ public class Animals {
         Scanner scanner = new Scanner(System.in);
         b = scanner.nextLine();
         return b;
-
     }
 
     public void findAnimalOrder(String[] animalList, String animalType) {
@@ -39,8 +58,10 @@ public class Animals {
         System.out.println("That's all the " + animalType + " I know. You win.");
     }
 
-    public void findMammalOrder(String[] animalList, String classification) {
+    public String findMammalOrder(String[] animalList) {
+        String classification = "";
         for(int i = 0; i < animalList.length; i++) {
+
             System.out.println("Is it a " + animalList[i]);
             getUserInput();
             if (getUserInput().equalsIgnoreCase("yes")) {
@@ -51,76 +72,15 @@ public class Animals {
 
         }
         System.out.println("That's all the types I know. You win.");
+        return classification;
     }
 
-    public boolean findIsVertebrate() {
-        System.out.println("Does the animal have a backbone?");
-        getUserInput();
-        if (getUserInput().equalsIgnoreCase("yes")) {
-            isVertebrate = true;
-        } else {
-            System.out.println("You got me. I don't know any invertebrates");
-        }
-        return isVertebrate;
-    }
 
-    public boolean getIsVertebrate() {
-        if(isVertebrate == true) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
-    public void setIsVertebrate(String userInput) {
-       this.isVertebrate = isVertebrate;
-    }
-
-    public String getAnimalClass() {
-        return animalClass;
-    }
-
-    public void setAnimalClass(String animalClass) {
-        this.animalClass = animalClass;
-    }
-
-    public String getOrder() {
-        return order;
-    }
-
-    public void setOrder(String order) {
-        this.order = order;
-    }
-
-    public String getFamily() {
-        return family;
-    }
-
-    public void setFamily(String family) {
-        this.family = family;
-    }
-
-    public String getGenus() {
-        return genus;
-    }
-
-    public void setGenus(String genus) {
-        this.genus = genus;
-    }
-
-    public String getSpecies() {
-        return species;
-    }
-
-    public void setSpecies(String species) {
-        this.species = species;
-    }
 
 }
 
 class Vertebrates extends Animals {
-    public void findPhylum(String userAnswer) {
+    public boolean findPhylum(String userAnswer) {
         System.out.println("Does the animal have a backbone?");
         System.out.println("Please enter 'yes' or 'no'");
         userAnswer = getUserInput();
@@ -133,13 +93,15 @@ class Vertebrates extends Animals {
         else {
             System.out.println("Error. Please type 'yes' or 'no'");
         }
+        return isVertebrate;
     }
 }
 
 class animalClass extends Vertebrates {
-    public void findAnimalClass() {
+    public String findAnimalClass() {
         String[] animalClassArray = {"bird", "fish", "reptile", "amphibian", "mammal"};
-        findMammalOrder(animalClassArray, animalClass);
+        String whatKindIsIt = findMammalOrder(animalClassArray);
+        return whatKindIsIt;
     }
 }
 
@@ -159,12 +121,35 @@ class order extends animalClass {
                 "dove", "crane", "snipe", "duck"};
         String[] birdofPreyArray = {"owl", "eagle", "hawk", "falcon,", "osprey", "vulture", "buzzard", "kite",
                 "condor"};
-        findMammalOrder(otherBirdArray, order);
-        findMammalOrder(bigBirdArray, order);
-        findMammalOrder(colorfulBirdArray, order);
-        findMammalOrder(seaBirdArray, order);
-        findMammalOrder(gameBirdArray, order);
-        findMammalOrder(birdofPreyArray, order);
+        List<String> list = new ArrayList<>();
+        String[] birdList = {"big bird", "game bird", "sea bird", "bird of prey", "colorful bird, such as a " +
+                "parrot", "nother bird, not in any of the above categories"};
+        for(int i = 0; i < 6; i++) {
+            System.out.println("Is it a " + birdList[i] + "?");
+            String userAnswer = getUserInput();
+            list.add(userAnswer);
+        }
+        if (list.get(0) == "yes") {
+            findMammalOrder(bigBirdArray);
+        }
+        if (list.get(1) == "yes") {
+            findMammalOrder(gameBirdArray);
+        }
+        if (list.get(2) == "yes") {
+            findMammalOrder(seaBirdArray);
+        }
+        if (list.get(3) == "yes") {
+            findMammalOrder(birdofPreyArray);
+        }
+        if (list.get(4) == "yes") {
+            findMammalOrder(colorfulBirdArray);
+        }
+        if (list.get(5) == "yes") {
+            findMammalOrder(otherBirdArray);
+        }
+        else {
+            System.out.println("All out of birds. You win.");
+        }
     }
 
     public void findFishOrder() {
@@ -256,4 +241,4 @@ class family extends order {
 
 }
 
-/*To Do: add carnivore list, other family list, continue main class, test program
+/*To Do: add carnivore list, other family list, continue main class, test program*/
