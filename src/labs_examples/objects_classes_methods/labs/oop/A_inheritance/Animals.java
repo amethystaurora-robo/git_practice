@@ -6,36 +6,19 @@ public class Animals {
     boolean isVertebrate = true;
     String animalClass;
     String order;
-    String family;
 
     public static void main(String[] args) {
         Vertebrates vertebrates = new Vertebrates();
         animalClass animalClass1 = new animalClass();
         order orders = new order();
-        family families = new family();
 
-       boolean isAVertebrate = vertebrates.findPhylum("yes");
-       if (isAVertebrate == true) {
+        boolean isAVertebrate = vertebrates.findPhylum("yes");
+        if (isAVertebrate == true) {
             String whatKindIsIt = animalClass1.findAnimalClass();
-           if (whatKindIsIt == "bird") {
 
-           }
-           else if (whatKindIsIt == "fish") {
-
-           }
-           else if (whatKindIsIt == "reptile") {
-
-           }
-           else if (whatKindIsIt == "amphibian") {
-
-           }
-           else {
-
-           }
-       }
-        else {
-           System.out.println("You got me. I don't know any invertebrates");
-       }
+        } else {
+            System.out.println("You got me. I don't know any invertebrates");
+        }
 
     }
 
@@ -47,7 +30,7 @@ public class Animals {
     }
 
     public void findAnimalOrder(String[] animalList, String animalType) {
-        for(int i = 0; i < animalList.length; i++) {
+        for (int i = 0; i < animalList.length; i++) {
             System.out.println("Is it a " + animalList[i]);
             getUserInput();
             if (getUserInput().equalsIgnoreCase("yes")) {
@@ -60,7 +43,7 @@ public class Animals {
 
     public String findMammalOrder(String[] animalList) {
         String classification = "";
-        for(int i = 0; i < animalList.length; i++) {
+        for (int i = 0; i < animalList.length; i++) {
 
             System.out.println("Is it a " + animalList[i]);
             getUserInput();
@@ -75,7 +58,14 @@ public class Animals {
         return classification;
     }
 
-
+    public List<String> findSpecificAnimal(String[] animalList, List<String> list) {
+        for (int i = 0; i < animalList.length; i++) {
+            System.out.println("Is it a " + animalList[i] + "?");
+            String userAnswer = getUserInput();
+            list.add(userAnswer);
+        }
+        return list;
+    }
 
 }
 
@@ -86,11 +76,9 @@ class Vertebrates extends Animals {
         userAnswer = getUserInput();
         if (userAnswer.equalsIgnoreCase("yes")) {
             isVertebrate = true;
-        }
-        else if (userAnswer.equalsIgnoreCase("no")) {
+        } else if (userAnswer.equalsIgnoreCase("no")) {
             isVertebrate = false;
-        }
-        else {
+        } else {
             System.out.println("Error. Please type 'yes' or 'no'");
         }
         return isVertebrate;
@@ -108,8 +96,8 @@ class animalClass extends Vertebrates {
 class order extends animalClass {
 
     public void findBirdOrder() {
-        String[] otherBirdArray = { "chicken", "sparrow", "woodpecker", "pigeon", "crow", "raven", "magpie",
-                "mockingbird", "blackbird", "hummingbird", "bluebird", "swallow",  "cuckoo", "bluejay",
+        String[] otherBirdArray = {"chicken", "sparrow", "woodpecker", "pigeon", "crow", "raven", "magpie",
+                "mockingbird", "blackbird", "hummingbird", "bluebird", "swallow", "cuckoo", "bluejay",
                 "cardinal", "wren", "nightingale", "quail", "guineafowl", "swan"};
         String[] bigBirdArray = {"flamingo", "penguin", "kiwi", "emu", "ostrich", "stork", "crane", "ibis",
                 "stork"};
@@ -124,30 +112,25 @@ class order extends animalClass {
         List<String> list = new ArrayList<>();
         String[] birdList = {"big bird", "game bird", "sea bird", "bird of prey", "colorful bird, such as a " +
                 "parrot", "nother bird, not in any of the above categories"};
-        for(int i = 0; i < 6; i++) {
-            System.out.println("Is it a " + birdList[i] + "?");
-            String userAnswer = getUserInput();
-            list.add(userAnswer);
-        }
+        findSpecificAnimal(birdList, list);
         if (list.get(0) == "yes") {
-            findMammalOrder(bigBirdArray);
+            findAnimalOrder(bigBirdArray, "big birds");
         }
         if (list.get(1) == "yes") {
-            findMammalOrder(gameBirdArray);
+            findAnimalOrder(gameBirdArray, "game birds");
         }
         if (list.get(2) == "yes") {
-            findMammalOrder(seaBirdArray);
+            findAnimalOrder(seaBirdArray, "sea birds");
         }
         if (list.get(3) == "yes") {
-            findMammalOrder(birdofPreyArray);
+            findAnimalOrder(birdofPreyArray, "birds of prey");
         }
         if (list.get(4) == "yes") {
-            findMammalOrder(colorfulBirdArray);
+            findAnimalOrder(colorfulBirdArray, "colorful birds");
         }
         if (list.get(5) == "yes") {
-            findMammalOrder(otherBirdArray);
-        }
-        else {
+            findAnimalOrder(otherBirdArray, "other birds");
+        } else {
             System.out.println("All out of birds. You win.");
         }
     }
@@ -157,16 +140,41 @@ class order extends animalClass {
                 "cod", "eel", "flounder", "grouper", "herring", "sardine", "shark", "swordfish", "trout"};
         String[] petFishArray = {"catfish", "tetra", "piranha", "shark", "clownfish", "angelfish", "betta", "goldfish",
                 "angelfish", "pufferfish", "barb", "koi", "guppy", "minnow", "eel", "stingray"};
-        findMammalOrder();
+        List<String> list = new ArrayList<>();
+        String[] fishTypeArray = {"edible fish", "pet fish"};
+        findSpecificAnimal(fishTypeArray, list);
+        if (list.get(0) == "yes") {
+            findAnimalOrder(edibleFishArray, "edible fish");
+        }
+        if (list.get(1) == "yes") {
+            findAnimalOrder(petFishArray, "pet fish");
+        } else {
+            System.out.println("Out of fish. You win. ");
+        }
 
     }
 
     public void findReptileOrder() {
         String[] lizardArray = {"komodo dragon", "bearded dragon", "gila monster", "chameleon", "collared lizard",
-        "gecko", "horned lizard", "legless lizard", "monitor"};
+                "gecko", "horned lizard", "legless lizard", "monitor"};
         String[] snakeArray = {"boa", "anaconda", "cobra", "python", "mamba", "viper", "sea snake", "rattlesnake",
-        "kingsnake", "garter snake"};
+                "kingsnake", "garter snake"};
         String[] otherReptileArray = {"dinosaur", "turtle", "crocodile", "alligator", "tortoise"};
+        List<String> list = new ArrayList<>();
+        String[] reptileTypeArray = {"lizard", "snake", "other reptile"};
+        findSpecificAnimal(reptileTypeArray, list);
+        if (list.get(0) == "yes") {
+            findAnimalOrder(lizardArray, "lizards");
+        }
+        if (list.get(1) == "yes") {
+            findAnimalOrder(snakeArray, "snakes");
+        }
+        if (list.get(2) == "yes") {
+            findAnimalOrder(otherReptileArray, "other reptiles");
+        } else {
+            System.out.println("All out of reptiles. You win");
+        }
+
     }
 
     public void findAmphibianOrder() {
@@ -174,71 +182,77 @@ class order extends animalClass {
         findAnimalOrder(amphibianArray, "amphibians");
     }
 
-    public  void findMammalOrder() {
+    public void findMammalOrders() {
         String[] mammalArray = {"rodent", "primate", "sea animal", "n Australian animal",
                 "animal with horns, antlers, or tusks", "spiky or armored animal",
-                "carnivore (not one of the above)", "other"};
-        findMammalOrder(mammalArray, "mammals");
-    }
-}
-
-class family extends order {
-
-    public void findCarnivoreFamily() {
-        String[] carnivoreArray = {"cats", "dogs", "bears", "other"};
-        findMammalOrder(carnivoreArray, "carnivore");
-
-    }
-
-    public void findRodentFamily() {
+                "carnivore (not one of the above)"};
+        String[] carnivoreArray = {"cat type", "dog type", "bear type"};
+        String[] catTypeArray = {"housecat", "tiger", "lion", "leopard", "cheetah", "jaguar", "cougar", "panther",
+                "ocelot", "lynx", "bobcat", "mountain lion"};
+        String[] dogTypeArray = {"pet dog", "wolf", "fox", "hyena", "coyote", "jackal", "dingo"};
+        String[] bearTypeArray = {"black bear", "brown bear", "polar bear", "panda bear", "sun bear", "sloth bear"};
         String[] rodentArray = {"squirrel", "rat", "mouse", "groundhog", "meerkat", "prairie dog", "capybara",
-        "hamster", "chinchilla", "beaver", "gerbil", "guinea pig", "mole"};
-        findMammalOrder(rodentArray, "rodent");
-
-    }
-
-    public void findPrimateFamily() {
+                "hamster", "chinchilla", "beaver", "gerbil", "guinea pig", "mole"};
         String[] primateArray = {"ape", "monkey", "lemur", "tarsier"};
         String[] apeArray = {"human", "gorilla", "orangutan", "chimpanzee", "gibbon"};
         String[] monkeyArray = {"mandril", "macaque", "capuchin", "baboon", "spider monkey",
                 "howler monkey", "squirrel monkey"};
-        findMammalOrder(primateArray, "primates");
-        findMammalOrder(apeArray, "apes");
-        findMammalOrder(monkeyArray, "monkeys");
-
-    }
-
-    public void findSeaAnimalFamily() {
         String[] seaAnimalArray = {"walrus", "seal", "sea lion", "manatee", "platypus", "beaver", "whale",
-        "dolphin", "porpoise", "hippo", "otter", "porpoise", "narwhal"};
-        findMammalOrder(seaAnimalArray, "sea animals");
-
-    }
-
-    public void findAustralianFamily() {
+                "dolphin", "porpoise", "hippo", "otter", "porpoise", "narwhal"};
         String[] australianArray = {"kangaroo", "wallaby", "wombat", "koala bear", "platypus", "tasmanian devil",
-        "sugar glider"};
-        findMammalOrder(australianArray, "australian animals");
-
-    }
-
-    public void findHerbivoreFamily() {
-        String[] herbivoreArray = {"giraffe", "elephant", "cow", "buffalo", "rhino", "deer", "goat", "sheep",
-                 "wildebeest", "moose", "caribou", "reindeer", "gazelle", "elk", "antelope"};
-        findMammalOrder(herbivoreArray, "herbivores");
-
-
-    }
-
-    public void findSpikyFamily() {
+                "sugar glider"};
+        String[] hornAntlerTuskArray = {"giraffe", "elephant", "cow", "buffalo", "rhino", "deer", "goat", "sheep",
+                "wildebeest", "moose", "caribou", "reindeer", "gazelle", "elk", "antelope"};
         String[] spikyArray = {"hedgehog", "armadillo", "pangolin", "porcupine", "echidna"};
-        findMammalOrder(spikyArray, "spiky or armored animal");
-    }
+        List<String> list = new ArrayList<>();
+        findSpecificAnimal(mammalArray, list);
+        if (list.get(0) == "yes") {
+            findAnimalOrder(rodentArray, "rodents");
+        }
+        if (list.get(1) == "yes") {
+            List<String> primateList = new ArrayList<>();
+            findSpecificAnimal(primateArray, primateList);
+            if (primateList.get(0) == "yes") {
+                findAnimalOrder(apeArray, "apes");
+            }
+            if (primateList.get(1) == "yes") {
+                findAnimalOrder(monkeyArray, "monkeys");
+            }
+            if (primateList.get(2) == "yes" || primateList.get(3) == "yes") {
+                System.out.println("Yay. I solved it.");
+            }
 
-    public void findOtherFamily() {
-        String[] otherFamilyArray = {};
-    }
+        }
+        if (list.get(2) == "yes") {
+            findAnimalOrder(seaAnimalArray, "sea mammals");
+        }
+        if (list.get(3) == "yes") {
+            findAnimalOrder(australianArray, "australian mammals");
+        }
+        if (list.get(4) == "yes") {
+            findAnimalOrder(hornAntlerTuskArray, "tusked, horned, or antlered mammals");
+        }
+        if (list.get(5) == "yes") {
+            findAnimalOrder(spikyArray, "spiky or armored mammals");
 
+        }
+        if (list.get(6) == "yes") {
+            List<String> carnivoreList = new ArrayList<>();
+            findSpecificAnimal(carnivoreArray, carnivoreList);
+            if (carnivoreList.get(0) == "yes") {
+                findSpecificAnimal(catTypeArray, carnivoreList);
+            }
+            if (carnivoreList.get(1) == "yes") {
+                findSpecificAnimal(dogTypeArray, carnivoreList);
+            }
+            if (carnivoreList.get(2) == "yes") {
+                findSpecificAnimal(bearTypeArray, carnivoreList);
+            }
+
+        }
+
+
+    }
 }
 
-/*To Do: add carnivore list, other family list, continue main class, test program*/
+
