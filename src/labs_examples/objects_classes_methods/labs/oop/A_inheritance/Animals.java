@@ -30,10 +30,12 @@ public class Animals {
     }
 
     public void findAnimalOrder(String[] animalList, String animalType) {
+        String classification = "";
         for (int i = 0; i < animalList.length; i++) {
             System.out.println("Is it a " + animalList[i]);
             getUserInput();
             if (getUserInput().equalsIgnoreCase("yes")) {
+                classification = animalList[i];
                 System.out.println("Yay. I solved it");
                 break;
             }
@@ -110,8 +112,8 @@ class order extends animalClass {
         String[] birdofPreyArray = {"owl", "eagle", "hawk", "falcon,", "osprey", "vulture", "buzzard", "kite",
                 "condor"};
         List<String> list = new ArrayList<>();
-        String[] birdList = {"big bird", "game bird", "sea bird", "bird of prey", "colorful bird, such as a " +
-                "parrot", "nother bird, not in any of the above categories"};
+        String[] birdList = {"big bird, for example, an ostrich", "game bird", "sea bird", "bird of prey",
+                "colorful bird, such as a " + "parrot", "nother bird, not in any of the above categories"};
         findSpecificAnimal(birdList, list);
         if (list.get(0) == "yes") {
             findAnimalOrder(bigBirdArray, "big birds");
