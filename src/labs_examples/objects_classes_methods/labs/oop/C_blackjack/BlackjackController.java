@@ -30,9 +30,9 @@ class Deck extends Card {
         String jack = "jack";
         String queen = "queen";
         String king = "king";
+
         for(int i = 0; i < suit.length; i++) {
-            for(int j = 2; j < 11; j++) {
-                cards[j] = i + suit[i];
+            cards[i] =
 
         }
     }
