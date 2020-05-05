@@ -26,13 +26,7 @@ class ObjectComp {
         specs.toString();
         type.toString();
         measurements.toString();
-
-
-
-
     }
-
-
 }
 
 public class Airplane {
