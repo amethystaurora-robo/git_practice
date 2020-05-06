@@ -69,6 +69,10 @@ public class Animals {
         return list;
     }
 
+    public void printResult() {
+        System.out.println("That's all the I know. You win");
+    }
+
 }
 
 class Vertebrates extends Animals {
@@ -96,7 +100,10 @@ class animalClass extends Vertebrates {
 }
 
 class order extends animalClass {
-
+    @Override
+    public void printResult() {
+        System.out.println("That's all the birds I know. You win");
+    }
     public void findBirdOrder() {
         String[] otherBirdArray = {"chicken", "sparrow", "woodpecker", "pigeon", "crow", "raven", "magpie",
                 "mockingbird", "blackbird", "hummingbird", "bluebird", "swallow", "cuckoo", "bluejay",
@@ -115,6 +122,7 @@ class order extends animalClass {
         String[] birdList = {"big bird, for example, an ostrich", "game bird", "sea bird", "bird of prey",
                 "colorful bird, such as a " + "parrot", "nother bird, not in any of the above categories"};
         findSpecificAnimal(birdList, list);
+
         if (list.get(0) == "yes") {
             findAnimalOrder(bigBirdArray, "big birds");
         }
@@ -133,7 +141,9 @@ class order extends animalClass {
         if (list.get(5) == "yes") {
             findAnimalOrder(otherBirdArray, "other birds");
         } else {
-            System.out.println("All out of birds. You win.");
+            //example of overriding
+            this.printResult();
+
         }
     }
 
@@ -169,7 +179,8 @@ class order extends animalClass {
             findAnimalOrder(lizardArray, "lizards");
         }
         if (list.get(1) == "yes") {
-            findAnimalOrder(snakeArray, "snakes");
+            //instance of super keyword
+            super.findAnimalOrder(snakeArray, "snakes");
         }
         if (list.get(2) == "yes") {
             findAnimalOrder(otherReptileArray, "other reptiles");
