@@ -1,5 +1,14 @@
 package labs_examples.objects_classes_methods.labs.oop.B_polymorphism;
 
+class implementDogses {
+    public static void main(String[] args) {
+        Baxter baxter = new Baxter();
+        Bentley bentley = new Bentley();
+        UnknownDog unknownDog = new UnknownDog();
+
+    }
+}
+
 public interface Dogses {
     public boolean bark(boolean isThundering, boolean strangerAtTheDoor);
     public void beQuiet();
@@ -9,16 +18,16 @@ public interface Dogses {
 
 class Baxter implements Dogses {
     @Override
-    public boolean bark() {
-        boolean bark = true;
+    public boolean bark(boolean isThundering, boolean strangerAtTheDoor) {
+        boolean barking = true;
 
         if (isThundering == true || strangerAtTheDoor == true) {
-            bark = true;
+            barking = true;
         }
         else {
-            bark = false;
+            barking = false;
         }
-        return bark;
+        return barking;
     }
 
 
@@ -36,7 +45,9 @@ class Baxter implements Dogses {
 
 class Bentley implements Dogses {
     @Override
-    public boolean bark() {}
+    public boolean bark(boolean toyWasStolen, boolean strangerAtTheDoor) {
+
+    }
 
     @Override
     public void beQuiet() {}
