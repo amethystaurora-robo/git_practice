@@ -43,20 +43,25 @@ class Deck extends Card {
             System.out.println(deck[i]);
         }*/
     }
+    class Hand {
+        ArrayList<Card> cards;
+        int handValue;
 
-    public void deal(Object player) {
+    }
+
+    public void deal() {
         Random random = new Random();
-        int upperLimit = deck.length;
-        for (i : deck[][]) {
-            char playerCard = nextInt(upperLimit);
-
+        int cardNum = random.nextInt(52);
+        for (int i = 0; i < usedCards.size(); i++ ) {
+            if(cardNum == usedCards.get(i)) {
+               cardNum = random.nextInt(52);
+            }
         }
+        usedCards.add(cardNum);
+        Hand hand = new Hand();
+        hand.cards.add(cardNum);
     }
 
 }
 
-class Hand {
-    ArrayList<Card> cards;
-    int handValue;
 
-}
