@@ -8,16 +8,30 @@ public class BlackjackController {
         Deck deck = new Deck();
         deck.populateCard();
     }
+
+    public void playBlackJack() {
+        Player playerone = new Player();
+        Player computerPlayer = new Player();
+    }
 }
 
 class Player {
     String name;
     Hand hand;
     int potValue;
-    public int returnPlayerNum() {
-        ArrayList<String> playerNames = null;
-        playerNames.add(name);
-        return playerNames.size();
+
+    public boolean computerAI() {
+        boolean anotherCard = true;
+        Hand hand = new Hand();
+        int score = hand.returnScore();
+        if(score <= 16) {
+            anotherCard = true;
+        }
+        else {
+            anotherCard = false;
+        }
+        return anotherCard;
+
     }
 }
 
