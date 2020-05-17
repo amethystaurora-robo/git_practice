@@ -14,25 +14,22 @@ public class Animals {
 
         boolean isAVertebrate = vertebrates.findPhylum("yes");
         if (isAVertebrate == true) {
-            String whatKindIsIt = animalClass1.findAnimalClass();
-
+            String animalType = animalClass1.findAnimalClass();
+            if (animalType.equalsIgnoreCase(("bird"))) {
+                orders.findBirdOrder();
+            } else if (animalType.equalsIgnoreCase("fish")) {
+                orders.findFishOrder();
+            } else if (animalType.equalsIgnoreCase("reptile")) {
+                orders.findReptileOrder();
+            } else if (animalType.equalsIgnoreCase("amphibian")) {
+                orders.findAmphibianOrder();
+            } else {
+                orders.findMammalOrders();
+            }
         } else {
             System.out.println("You got me. I don't know any invertebrates");
         }
 
-        String animalType = animalClass1.findAnimalClass();
-        System.out.println(animalType);
-        if (animalType.equalsIgnoreCase("bird")) {
-            orders.findBirdOrder();
-        } else if (animalType.equalsIgnoreCase("fish")) {
-            orders.findFishOrder();
-        } else if (animalType.equalsIgnoreCase("reptile")) {
-            orders.findReptileOrder();
-        } else if (animalType.equalsIgnoreCase("amphibian")) {
-            orders.findAmphibianOrder();
-        } else {
-            orders.findMammalOrders();
-        }
 
     }
 
@@ -46,9 +43,9 @@ public class Animals {
     public void findAnimalOrder(String[] animalList, String animalType) {
         String classification = "";
         for (int i = 0; i < animalList.length; i++) {
-            System.out.println("Is it a " + animalList[i]);
+            System.out.println("Is it a " + animalList[i] + "?");
             getUserInput();
-            if (getUserInput().equalsIgnoreCase("yes")) {
+            if (getUserInput().equals("yes")) {
                 classification = animalList[i];
                 System.out.println("Yay. I solved it");
                 break;
@@ -61,14 +58,13 @@ public class Animals {
         String classification = "";
         for (int i = 0; i < animalList.length; i++) {
 
-            System.out.println("Is it a " + animalList[i]);
-            getUserInput();
-            if (getUserInput().equalsIgnoreCase("yes")) {
+            System.out.println("Is it a " + animalList[i] + "?");
+            // getUserInput();
+            if (getUserInput().equals("yes")) {
                 classification = animalList[i];
                 System.out.println("Great. Let's narrow that down");
                 break;
-            }
-            else {
+            } else if (getUserInput().equalsIgnoreCase("no")) {
                 System.out.println("Ok, let's try again.");
             }
 
@@ -85,6 +81,10 @@ public class Animals {
         }
         return list;
     }
+
+    /*public void sortThruAnimals() {
+        if findSpecificAnimal()
+    }  */
 
     public void printResult() {
         System.out.println("That's all the I know. You win");
@@ -121,6 +121,7 @@ class order extends animalClass {
     public void printResult() {
         System.out.println("That's all the birds I know. You win");
     }
+
     public void findBirdOrder() {
         String[] otherBirdArray = {"chicken", "sparrow", "woodpecker", "pigeon", "crow", "raven", "magpie",
                 "mockingbird", "blackbird", "hummingbird", "bluebird", "swallow", "cuckoo", "bluejay",
@@ -138,25 +139,26 @@ class order extends animalClass {
         List<String> list = new ArrayList<>();
         String[] birdList = {"big bird, for example, an ostrich", "game bird", "sea bird", "bird of prey",
                 "colorful bird, such as a " + "parrot", "nother bird, not in any of the above categories"};
+        animalClass animalClass = new animalClass();
+        animalClass.findAnimalClass();
         findSpecificAnimal(birdList, list);
 
         if (list.get(0) == "yes") {
             findAnimalOrder(bigBirdArray, "big birds");
-        }
-        if (list.get(1) == "yes") {
+        } else if (list.get(1) == "yes") {
             findAnimalOrder(gameBirdArray, "game birds");
-        }
-        if (list.get(2) == "yes") {
+        } else if (list.get(2) == "yes") {
             findAnimalOrder(seaBirdArray, "sea birds");
-        }
-        if (list.get(3) == "yes") {
+
+        } else if (list.get(3) == "yes") {
             findAnimalOrder(birdofPreyArray, "birds of prey");
-        }
-        if (list.get(4) == "yes") {
+
+        } else if (list.get(4) == "yes") {
             findAnimalOrder(colorfulBirdArray, "colorful birds");
-        }
-        if (list.get(5) == "yes") {
+
+        } else if (list.get(5) == "yes") {
             findAnimalOrder(otherBirdArray, "other birds");
+
         } else {
             //example of overriding
             this.printResult();
