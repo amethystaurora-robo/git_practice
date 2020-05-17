@@ -20,6 +20,20 @@ public class Animals {
             System.out.println("You got me. I don't know any invertebrates");
         }
 
+        String animalType = animalClass1.findAnimalClass();
+        System.out.println(animalType);
+        if (animalType.equalsIgnoreCase("bird")) {
+            orders.findBirdOrder();
+        } else if (animalType.equalsIgnoreCase("fish")) {
+            orders.findFishOrder();
+        } else if (animalType.equalsIgnoreCase("reptile")) {
+            orders.findReptileOrder();
+        } else if (animalType.equalsIgnoreCase("amphibian")) {
+            orders.findAmphibianOrder();
+        } else {
+            orders.findMammalOrders();
+        }
+
     }
 
     public String getUserInput() {
@@ -54,10 +68,13 @@ public class Animals {
                 System.out.println("Great. Let's narrow that down");
                 break;
             }
+            else {
+                System.out.println("Ok, let's try again.");
+            }
 
         }
-        System.out.println("That's all the types I know. You win.");
         return classification;
+
     }
 
     public List<String> findSpecificAnimal(String[] animalList, List<String> list) {
