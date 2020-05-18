@@ -11,10 +11,11 @@ public class Animals {
         Vertebrates vertebrates = new Vertebrates();
         animalClass animalClass1 = new animalClass();
         order orders = new order();
+        String[] animalClassArray = {"bird", "fish", "reptile", "amphibian", "mammal"};
 
         boolean isAVertebrate = vertebrates.findPhylum("yes");
         if (isAVertebrate == true) {
-            String animalType = animalClass1.findAnimalClass();
+            String animalType = animalClass1.findAnimalClass(animalClassArray);
             if (animalType.equalsIgnoreCase(("bird"))) {
                 orders.findBirdOrder();
             } else if (animalType.equalsIgnoreCase("fish")) {
@@ -75,16 +76,18 @@ public class Animals {
 
     public List<String> findSpecificAnimal(String[] animalList, List<String> list) {
         for (int i = 0; i < animalList.length; i++) {
-            System.out.println("Is it a " + animalList[i] + "?");
-            String userAnswer = getUserInput();
-            list.add(userAnswer);
+            if (getUserInput().equalsIgnoreCase("yes")) {
+                list.add("yes");
+            }
+            else if (getUserInput().equalsIgnoreCase("no")) {
+                list.add("no");
+            }
+
         }
         return list;
     }
 
-    /*public void sortThruAnimals() {
-        if findSpecificAnimal()
-    }  */
+
 
     public void printResult() {
         System.out.println("That's all the I know. You win");
@@ -109,9 +112,8 @@ class Vertebrates extends Animals {
 }
 
 class animalClass extends Vertebrates {
-    public String findAnimalClass() {
-        String[] animalClassArray = {"bird", "fish", "reptile", "amphibian", "mammal"};
-        String whatKindIsIt = findMammalOrder(animalClassArray);
+    public String findAnimalClass(String[] animalArray) {
+        String whatKindIsIt = findMammalOrder(animalArray);
         return whatKindIsIt;
     }
 }
@@ -138,9 +140,9 @@ class order extends animalClass {
                 "condor"};
         List<String> list = new ArrayList<>();
         String[] birdList = {"big bird, for example, an ostrich", "game bird", "sea bird", "bird of prey",
-                "colorful bird, such as a " + "parrot", "nother bird, not in any of the above categories"};
+                "colorful bird, such as a parrot", "nother bird, not in any of the above categories"};
         animalClass animalClass = new animalClass();
-        animalClass.findAnimalClass();
+        animalClass.findAnimalClass(birdList);
         findSpecificAnimal(birdList, list);
 
         if (list.get(0) == "yes") {
