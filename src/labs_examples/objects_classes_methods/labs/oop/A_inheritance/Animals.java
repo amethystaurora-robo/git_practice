@@ -238,7 +238,7 @@ class order extends animalClass {
     public void findMammalOrders() {
         String[] mammalArray = {"rodent", "primate", "sea or water dwelling animal", "n Australian animal",
                 "animal with horns, antlers, or tusks", "spiky or armored animal",
-                "carnivore (not one of the above)", "herbivore (not one of the above)"};
+                "carnivore (insectivore, omnivore, or not one of the above)", "herbivore (insectivore, omnivore, or not one of the above)"};
         String[] carnivoreArray = {"cat type", "dog type", "bear type", "other"};
         String[] catTypeArray = {"housecat", "tiger", "lion", "leopard", "cheetah", "jaguar", "panther",
                 "ocelot", "lynx", "bobcat", "mountain lion/cougar/puma", "liger", "serval"};
@@ -302,7 +302,7 @@ class order extends animalClass {
             findMammalOrder(spikyArray, "spiky or armored mammals");
 
         }
-        if (mammalType == "carnivore (not one of the above)") {
+        if (mammalType == "carnivore (insectivore, omnivore, or not one of the above)") {
             String carnivoreType = animalClass.findAnimalClass(carnivoreArray);
             if (carnivoreType == "cat type") {
                 findMammalOrder(catTypeArray, "cats");
@@ -317,11 +317,9 @@ class order extends animalClass {
                 findMammalOrder(otherArrayAH, otherArrayI, "mammals");
             }
 
-        } if (mammalType == "herbivore (not one of the above)") {
+        } if (mammalType == "herbivore (insectivore, omnivore, or not one of the above)") {
                 findMammalOrder(herbivoreArrayAH, herbivoreArrayI, "herbivores");
         }
-
-
     }
 }
 
