@@ -17,7 +17,7 @@ public class Example {
         exampletwo.returnTrue();
 
         //this doesn't work because it's protected
-        exampletwo.returnFalse();
+        //exampletwo.returnFalse();
 
     }
 
