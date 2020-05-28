@@ -98,6 +98,12 @@ public class Animals {
         System.out.println("That's all the birds I know. You win");
     }
 
+    public int countGuesses() {
+        int guessNum = 0;
+        
+        return guessNum;
+    }
+
 }
 
 class Vertebrates extends Animals {
@@ -271,7 +277,7 @@ class order extends animalClass {
         String[] herbivoreArrayAH = {"aardvark", "horse", "hippo", "hyrax", "civet", "alpaca",  "dromedary", "donkey",
                 "camel", "goat", "fossa", "hare", "chamois", "bat", "beaver", "coati", "gerenuk"};
         String[] herbivoreArrayI = {"raccoon", "impala", "kudu", "okapi", "opossum", "mole", "mongoose", "mule", "red panda",
-        "zonkey", "zorse", "zebra", "tapir", "llama", "pig", "sheep", "rabbit", "sloth", "stoat", "weasel", "skunk", "wolverine"
+        "zonkey", "zorse", "zebra", "tapir", "llama", "pig", "sheep", "rabbit", "sloth", "stoat", "weasel", "skunk", "wolverine",
         "peccary"};
         animalClass animalClass = new animalClass();
         String mammalType = animalClass.findAnimalClass(mammalArray);
