@@ -11,19 +11,25 @@ public class Animals {
         Vertebrates vertebrates = new Vertebrates();
         animalClass animalClass1 = new animalClass();
         order orders = new order();
+        int questionNum = 0;
         String[] animalClassArray = {"mammal", "fish", "reptile", "amphibian", "bird"};
 
         boolean isAVertebrate = vertebrates.findPhylum("yes");
         if (isAVertebrate == true) {
+            questionNum = 1;
             String animalType = animalClass1.findAnimalClass(animalClassArray);
             if (animalType.equalsIgnoreCase("mammal")) {
                 orders.findMammalOrders();
+                questionNum = printQuestionNum(questionNum);
             } else if (animalType.equalsIgnoreCase("fish")) {
                 orders.findFishOrder();
+                printQuestionNum(questionNum);
             } else if (animalType.equalsIgnoreCase("reptile")) {
                 orders.findReptileOrder();
+                printQuestionNum(questionNum);
             } else if (animalType.equalsIgnoreCase("amphibian")) {
                 orders.findAmphibianOrder();
+                printQuestionNum(questionNum);
             } else {
                 orders.findBirdOrder();
             }
@@ -41,11 +47,18 @@ public class Animals {
         return b;
     }
 
-    public String findMammalOrder(String[] animalList, String animalType) {
+    public static int printQuestionNum(int questionNum) {
+        questionNum++;
+        System.out.println("                                        " + questionNum);
+        return questionNum;
+    }
+
+    public String findMammalOrder(String[] animalList, String animalType, int questionNum) {
         String classification = "";
         for (int i = 0; i < animalList.length; i++) {
 
             System.out.println("Is it a " + animalList[i] + "?");
+            printQuestionNum(questionNum);
             if (getUserInput().equals("yes")) {
                 classification = animalList[i];
                 System.out.println("Cool. I win.");
@@ -58,24 +71,25 @@ public class Animals {
         return classification;
     }
 
-    public String findMammalOrder(String[] animalListAH, String[] animalListI, String animalType) {
+    public String findMammalOrder(String[] animalListAH, String[] animalListI, String animalType, int questionNum) {
         String classification = "";
         System.out.println("Does the " + animalType + " start with the letters a through h?");
+        printQuestionNum(questionNum);
         if (getUserInput().equalsIgnoreCase("yes")) {
-            findMammalOrder(animalListAH, animalType);
+            findMammalOrder(animalListAH, animalType, questionNum);
         }
         else {
-            findMammalOrder(animalListI, animalType);
+            findMammalOrder(animalListI, animalType, questionNum);
         }
         return classification;
     }
 
     //example of method overloading
-    public String findMammalOrder(String[] animalList) {
+    public String findMammalOrder(String[] animalList, int questionNum) {
         String animalType = "";
         for (int i = 0; i < animalList.length; i++) {
             System.out.println("Is it a " + animalList[i] + "?");
-            // getUserInput();
+            printQuestionNum(questionNum);
             if (getUserInput().equals("yes")) {
                 animalType = animalList[i];
                 System.out.println("Great. Let's narrow that down");
@@ -98,12 +112,6 @@ public class Animals {
         System.out.println("That's all the birds I know. You win");
     }
 
-    public int countGuesses() {
-        int guessNum = 0;
-        
-        return guessNum;
-    }
-
 }
 
 class Vertebrates extends Animals {
@@ -111,6 +119,7 @@ class Vertebrates extends Animals {
         System.out.println("Does the animal have a backbone?");
         System.out.println("Please enter 'yes' or 'no'");
         userAnswer = getUserInput();
+        printQuestionNum(0);
         if (userAnswer.equalsIgnoreCase("yes")) {
             isVertebrate = true;
         } else if (userAnswer.equalsIgnoreCase("no")) {
@@ -124,7 +133,7 @@ class Vertebrates extends Animals {
 
 class animalClass extends Vertebrates {
     public String findAnimalClass(String[] animalArray) {
-        String whatKindIsIt = findMammalOrder(animalArray);
+        String whatKindIsIt = findMammalOrder(animalArray, printQuestionNum());
         return whatKindIsIt;
     }
 }
