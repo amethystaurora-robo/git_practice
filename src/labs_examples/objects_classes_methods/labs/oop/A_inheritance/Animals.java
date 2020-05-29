@@ -4,34 +4,27 @@ import java.util.*;
 
 public class Animals {
     boolean isVertebrate = true;
-    String animalClass;
-    String order;
+
 
     public static void main(String[] args) {
         Vertebrates vertebrates = new Vertebrates();
         animalClass animalClass1 = new animalClass();
         order orders = new order();
-        int questionNum = 0;
         String[] animalClassArray = {"mammal", "fish", "reptile", "amphibian", "bird"};
 
         boolean isAVertebrate = vertebrates.findPhylum("yes");
         if (isAVertebrate == true) {
-            questionNum = 1;
             String animalType = animalClass1.findAnimalClass(animalClassArray);
             if (animalType.equalsIgnoreCase("mammal")) {
                 orders.findMammalOrders();
-                questionNum = printQuestionNum(questionNum);
             } else if (animalType.equalsIgnoreCase("fish")) {
                 orders.findFishOrder();
-                printQuestionNum(questionNum);
             } else if (animalType.equalsIgnoreCase("reptile")) {
                 orders.findReptileOrder();
-                printQuestionNum(questionNum);
-            } else if (animalType.equalsIgnoreCase("amphibian")) {
-                orders.findAmphibianOrder();
-                printQuestionNum(questionNum);
-            } else {
+            } else if (animalType.equalsIgnoreCase("bird")) {
                 orders.findBirdOrder();
+            } else {
+                orders.findAmphibianOrder();
             }
         } else {
             System.out.println("You got me. I don't know any invertebrates");
@@ -47,18 +40,13 @@ public class Animals {
         return b;
     }
 
-    public static int printQuestionNum(int questionNum) {
-        questionNum++;
-        System.out.println("                                        " + questionNum);
-        return questionNum;
-    }
-
-    public String findMammalOrder(String[] animalList, String animalType, int questionNum) {
+    public String findMammalOrder(String[] animalList, String animalType) {
         String classification = "";
         for (int i = 0; i < animalList.length; i++) {
 
             System.out.println("Is it a " + animalList[i] + "?");
-            printQuestionNum(questionNum);
+            QuestionCount questionCount = new QuestionCount();
+            questionCount.printQuestionNum();
             if (getUserInput().equals("yes")) {
                 classification = animalList[i];
                 System.out.println("Cool. I win.");
@@ -71,25 +59,27 @@ public class Animals {
         return classification;
     }
 
-    public String findMammalOrder(String[] animalListAH, String[] animalListI, String animalType, int questionNum) {
+    public String findMammalOrder(String[] animalListAH, String[] animalListI, String animalType) {
         String classification = "";
         System.out.println("Does the " + animalType + " start with the letters a through h?");
-        printQuestionNum(questionNum);
+        QuestionCount questionCount = new QuestionCount();
+        questionCount.printQuestionNum();
         if (getUserInput().equalsIgnoreCase("yes")) {
-            findMammalOrder(animalListAH, animalType, questionNum);
+            findMammalOrder(animalListAH, animalType);
         }
         else {
-            findMammalOrder(animalListI, animalType, questionNum);
+            findMammalOrder(animalListI, animalType);
         }
         return classification;
     }
 
     //example of method overloading
-    public String findMammalOrder(String[] animalList, int questionNum) {
+    public String findMammalOrder(String[] animalList) {
         String animalType = "";
         for (int i = 0; i < animalList.length; i++) {
             System.out.println("Is it a " + animalList[i] + "?");
-            printQuestionNum(questionNum);
+            QuestionCount questionCount = new QuestionCount();
+            questionCount.printQuestionNum();
             if (getUserInput().equals("yes")) {
                 animalType = animalList[i];
                 System.out.println("Great. Let's narrow that down");
@@ -119,7 +109,8 @@ class Vertebrates extends Animals {
         System.out.println("Does the animal have a backbone?");
         System.out.println("Please enter 'yes' or 'no'");
         userAnswer = getUserInput();
-        printQuestionNum(0);
+        QuestionCount questionCount = new QuestionCount();
+        questionCount.printQuestionNum();
         if (userAnswer.equalsIgnoreCase("yes")) {
             isVertebrate = true;
         } else if (userAnswer.equalsIgnoreCase("no")) {
@@ -133,7 +124,7 @@ class Vertebrates extends Animals {
 
 class animalClass extends Vertebrates {
     public String findAnimalClass(String[] animalArray) {
-        String whatKindIsIt = findMammalOrder(animalArray, printQuestionNum());
+        String whatKindIsIt = findMammalOrder(animalArray);
         return whatKindIsIt;
     }
 }
@@ -145,21 +136,21 @@ class order extends animalClass {
     }
 
     public void findBirdOrder() {
-        String[] otherBirdArrayAH = {"bee eater", "blackbird", "bluebird", "bluejay", "cardinal", "chicken", "crow",
-                  "cuckoo", "hummingbird"};
+        String[] otherBirdArrayAH = {"blackbird", "bluebird", "bluejay", "cardinal", "chicken", "crow",
+                  "cuckoo", "hummingbird", "bee eater"};
         String[] otherBirdArrayI = { "sparrow", "woodpecker", "pigeon",  "raven",
                 "magpie",  "swallow",  "quail", "guineafowl", "swan", "wryneck"};
         String[] songBirdArray = {"robin", "magpie", "mockingbird", "blackbird", "bluebird", "bluejay", "cardinal",
-        "wren", "nightingale", "oriole", "uguisu", "crake", "finch"};
-        String[] bigBirdArray = {"flamingo", "penguin", "kiwi", "emu", "ostrich", "stork", "crane", "ibis",
-                "stork", "kakapo", "spoonbill", "umbrellabird"};
-        String[] colorfulBirdArrayAH = {"bee eater", "bird of paradise",  "finch", "cockatoo", "finch"};
-        String[] colorfulBirdArrayI = {"toucan", "parakeet",
-                "lorikeet", "macaw", "lovebird", "oriole",  "kakapo", "kingfisher",
-                 "quetzal", "umbrellabird", "parrot","robin"};
-        String[] seaBirdArray = {"seagull", "puffin", "booby", "cormorant", "albatross", "pelican", "penguin",
-                "tern", "kingfisher", "moorhen", "spoonbill", "grebe", "plover"};
-        String[] gameBirdArray = {"grouse", "turkey", "pheasant", "goose", "partridge", "quail", "goose",
+        "wren", "nightingale", "crake", "finch", "oriole", "uguisu"};
+        String[] bigBirdArray = {"flamingo", "penguin", "ostrich", "stork", "crane", "ibis",
+                "kiwi", "emu","kakapo", "spoonbill", "umbrellabird"};
+        String[] colorfulBirdArrayAH = {"bird of paradise",  "finch", "cockatoo", "bee eater"};
+        String[] colorfulBirdArrayI = { "parrot","robin", "toucan", "parakeet",
+                 "macaw", "lovebird", "oriole",  "kakapo", "kingfisher", "lorikeet",
+                 "quetzal", "umbrellabird"};
+        String[] seaBirdArray = {"seagull", "puffin", "cormorant", "albatross", "pelican", "penguin",
+                "tern", "kingfisher", "moorhen", "spoonbill", "booby", "grebe", "plover"};
+        String[] gameBirdArray = {"grouse", "turkey", "pheasant", "goose", "partridge", "quail",
                 "dove", "crane", "snipe", "duck"};
         String[] birdofPreyArray = {"owl", "eagle", "hawk", "falcon,", "osprey", "vulture", "buzzard", "kite",
                 "condor"};
@@ -194,13 +185,12 @@ class order extends animalClass {
         String[] edibleFishArrayAH = {"cod", "eel", "flounder", "grouper", "herring", "barracuda", "anchovie", "bass", "catfish"};
         String[] edibleFishArrayI = {"sardine", "shark", "swordfish", "trout",
         "pike","tilapia", "tuna", "salmon"};
-        String[] petFishArrayAH = {"tang (dory fish)", "catfish", "clownfish", "angelfish", "eel",
-                "betta", "goldfish", "angelfish", "barb", "guppy"};
+        String[] petFishArrayAH = {"guppy", "tang (dory fish)", "catfish", "clownfish", "angelfish", "eel",
+                "betta", "goldfish", "angelfish", "barb"};
         String[] petFishArrayI = {"koi",  "minnow", "stingray",
-                "molly", "silver dollar", "wrasse", "tang (dory fish", "tetra", "piranha", "shark", "pufferfish"};
+                "molly", "silver dollar", "wrasse", "tang (dory fish)", "tetra", "piranha", "shark", "pufferfish"};
         String[] otherFishArray = {"moray eel", "pike", "piranha", "shark", "pufferfish", "eel", "stingray", "barracuda",
         "swordfish", "wrasse"};
-        List<String> list = new ArrayList<>();
         String[] fishTypeArray = {"edible fish", "pet fish", "other fish"};
         animalClass animalClass = new animalClass();
         String fishType = animalClass.findAnimalClass(fishTypeArray);
@@ -225,7 +215,6 @@ class order extends animalClass {
         String[] snakeArray = {"boa", "anaconda", "cobra", "python", "mamba", "viper", "sea snake", "rattlesnake",
                 "kingsnake", "garter snake", "black mamba", "copperhead snake", "cottonmouth", "galapagos snake"};
         String[] otherReptileArray = {"dinosaur", "turtle", "crocodile", "alligator", "tortoise", "caiman"};
-        List<String> list = new ArrayList<>();
         String[] reptileTypeArray = {"lizard", "snake", "other reptile"};
         animalClass animalClass = new animalClass();
         String reptileType = animalClass.findAnimalClass(reptileTypeArray);
@@ -338,6 +327,25 @@ class order extends animalClass {
                 findMammalOrder(herbivoreArrayAH, herbivoreArrayI, "herbivores");
         }
     }
+
 }
+
+class QuestionCount {
+    static int questionNum = 0;
+
+    public static int getQuestionNum() {
+        questionNum++;
+        return questionNum;
+    }
+
+    public static void printQuestionNum() {
+        getQuestionNum();
+        System.out.println("                                        Question number: " + questionNum);
+        if (questionNum == 20) {
+            System.out.println("That's 20 questions. You got me.");
+        }
+    }
+
+        }
 
 
