@@ -10,19 +10,19 @@ public class Animals {
         Vertebrates vertebrates = new Vertebrates();
         animalClass animalClass1 = new animalClass();
         order orders = new order();
-        String[] animalClassArray = {"mammal", "fish", "reptile", "amphibian", "bird"};
+        String[] animalClassArray = {"mammal", "bird", "reptile", "fish", "amphibian"};
 
         boolean isAVertebrate = vertebrates.findPhylum("yes");
         if (isAVertebrate == true) {
             String animalType = animalClass1.findAnimalClass(animalClassArray);
             if (animalType.equalsIgnoreCase("mammal")) {
                 orders.findMammalOrders();
-            } else if (animalType.equalsIgnoreCase("fish")) {
-                orders.findFishOrder();
-            } else if (animalType.equalsIgnoreCase("reptile")) {
-                orders.findReptileOrder();
             } else if (animalType.equalsIgnoreCase("bird")) {
                 orders.findBirdOrder();
+            } else if (animalType.equalsIgnoreCase("reptile")) {
+                orders.findReptileOrder();
+            } else if (animalType.equalsIgnoreCase("fish")) {
+                orders.findFishOrder();
             } else {
                 orders.findAmphibianOrder();
             }
@@ -69,6 +69,51 @@ public class Animals {
         }
         else {
             findMammalOrder(animalListI, animalType);
+        }
+        return classification;
+    }
+
+    public String findMammalOrder(String[] animalListAG, String[] animalListHM, String[] animalListNR, String[] animalListSZ, String animalType) {
+        String classification = "";
+        System.out.println("Does the " + animalType + " start with the letters a through g?");
+        QuestionCount questionCount = new QuestionCount();
+        questionCount.printQuestionNum();
+        if (getUserInput().equalsIgnoreCase("yes")) {
+            findMammalOrder(animalListAG, animalType);
+        }
+        else {
+            System.out.println("Does the " + animalType + " start with the letters h through m?");
+            if (getUserInput().equalsIgnoreCase("yes")) {
+                findMammalOrder(animalListHM, animalType);
+            }
+            else {
+                System.out.println("Does the " + animalType + "start with letters n through r?");
+                if (getUserInput().equalsIgnoreCase("yes")) {
+                    findMammalOrder(animalListNR, animalType);
+                } else {
+                    findMammalOrder(animalListSZ, animalType);
+                }
+            }
+        }
+        return classification;
+    }
+
+    public String findMammalOrder(String[] animalListAH, String[] animalListIO, String[] animalListPZ, String animalType) {
+        String classification = "";
+        System.out.println("Does the " + animalType + " start with the letters a through h?");
+        QuestionCount questionCount = new QuestionCount();
+        questionCount.printQuestionNum();
+        if (getUserInput().equalsIgnoreCase("yes")) {
+            findMammalOrder(animalListAH, animalType);
+        }
+        else {
+            System.out.println("Does the " + animalType + " start with the letters i through o?");
+            if (getUserInput().equalsIgnoreCase("yes")) {
+                findMammalOrder(animalListIO, animalType);
+            }
+            else {
+                findMammalOrder(animalListPZ, animalType);
+            }
         }
         return classification;
     }
@@ -139,7 +184,7 @@ class order extends animalClass {
         String[] otherBirdArrayAH = {"blackbird", "bluebird", "bluejay", "cardinal", "chicken", "crow",
                   "cuckoo", "hummingbird", "bee eater"};
         String[] otherBirdArrayI = { "sparrow", "woodpecker", "pigeon",  "raven",
-                "magpie",  "swallow",  "quail", "guineafowl", "swan", "wryneck"};
+                "magpie",  "swallow",  "quail", "guineafowl"};
         String[] songBirdArray = {"robin", "magpie", "mockingbird", "blackbird", "bluebird", "bluejay", "cardinal",
         "wren", "nightingale", "crake", "finch", "oriole", "uguisu"};
         String[] bigBirdArray = {"flamingo", "penguin", "ostrich", "stork", "crane", "ibis",
@@ -148,15 +193,15 @@ class order extends animalClass {
         String[] colorfulBirdArrayI = { "parrot","robin", "toucan", "parakeet",
                  "macaw", "lovebird", "oriole",  "kakapo", "kingfisher", "lorikeet",
                  "quetzal", "umbrellabird"};
-        String[] seaBirdArray = {"seagull", "puffin", "cormorant", "albatross", "pelican", "penguin",
+        String[] seaBirdArray = {"seagull", "puffin", "swan", "cormorant", "albatross", "pelican", "penguin",
                 "tern", "kingfisher", "moorhen", "spoonbill", "booby", "grebe", "plover"};
         String[] gameBirdArray = {"grouse", "turkey", "pheasant", "goose", "partridge", "quail",
                 "dove", "crane", "snipe", "duck"};
         String[] birdofPreyArray = {"owl", "eagle", "hawk", "falcon,", "osprey", "vulture", "buzzard", "kite",
                 "condor"};
         List<String> list = new ArrayList<>();
-        String[] birdList = {"big bird, for example, an ostrich", "game bird", "sea bird or water bird", "bird of prey",
-                "colorful bird, such as a parrot", "song bird", "nother bird, not in any of the above categories"};
+        String[] birdList = {"song bird", "colorful bird, such as a parrot", "sea bird or water bird", "big bird, for example, an ostrich", "game bird",  "bird of prey",
+                 "nother bird, not in any of the above categories"};
         animalClass animalClass = new animalClass();
         String birdType = animalClass.findAnimalClass(birdList);
 
@@ -164,7 +209,7 @@ class order extends animalClass {
             findMammalOrder(bigBirdArray, "big birds");
         } else if (birdType == "game bird") {
             findMammalOrder(gameBirdArray, "game birds");
-        } else if (birdType == "sea bird") {
+        } else if (birdType == "sea bird or water bird") {
             findMammalOrder(seaBirdArray, "sea birds");
         } else if (birdType == "bird of prey") {
             findMammalOrder(birdofPreyArray, "birds of prey");
@@ -243,40 +288,42 @@ class order extends animalClass {
         String[] mammalArray = {"rodent", "primate", "sea or water dwelling animal", "n Australian animal",
                 "animal with horns, antlers, or tusks", "spiky or armored animal",
                 "carnivore (or insectivore, or not one of the above)", "herbivore (or omnivore, or not one of the above)"};
-        String[] carnivoreArray = {"cat type", "dog type", "bear type", "other"};
-        String[] catTypeArray = {"housecat", "tiger", "lion", "leopard", "cheetah", "jaguar", "panther",
-                "ocelot", "lynx", "bobcat", "mountain lion/cougar/puma", "liger", "serval", "caracal"};
-        String[] otherArrayAH = {"aardvark", "anteater", "badger", "hyrax", "civet", "bat", "coati"};
-        String[] otherArrayI = {"opossum", "mole", "mongoose", "red panda", "sloth",  "stoat", "rabbit",
-                "racoon", "weasel", "skunk", "wolverine"};
+        String[] carnivoreArray = {"cat type", "dog type", "bear type"};
+        String[] catTypeArray = {"housecat", "tiger", "lion", "cheetah", "jaguar/panther/leopard",
+                "ocelot", "lynx", "bobcat", "mountain lion/cougar/puma", "liger"};
+        String[] otherArrayAH = {"aardvark", "anteater", "badger", "civet", "bat", "coati"};
+        String[] otherArrayI = {"opossum", "mongoose", "red panda", "sloth",
+                "racoon", "skunk", "wolverine"};
         String[] dogTypeArray = {"pet dog", "wolf", "fox", "hyena", "coyote", "jackal", "dingo", "maned wolf"};
         String[] bearTypeArray = {"black bear", "grizzly bear", "brown bear", "polar bear", "panda bear", "sun bear",
-                "sloth bear", "red panda", "spectacled bear"};
+                "sloth bear", "spectacled bear"};
         String[] rodentArrayBH = {"chickaree", "badger", "beaver", "capybara", "coati", "chinchilla","civet", "chipmunk", "ferret", "fossa",
                 "gopher", "groundhog","gerbil", "guinea pig", "hamster", "hare", "hyrax"} ;
-        String[] rodentArrayI = {"squirrel", "rat", "mouse",  "meerkat", "prairie dog", "lemming", "mole",
+        String[] rodentArrayI = {"squirrel", "rat", "vole", "mouse",  "meerkat", "prairie dog", "lemming", "mole",
                 "rabbit",  "weasel", "skunk", "wolverine",  "raccoon",   "opossum", "mongoose",
-        "pika", "stoat", "water vole"};
+        "pika"};
         String[] primateArray = {"ape", "monkey", "lemur", "tarsier"};
         String[] apeArray = {"human", "gorilla", "orangutan", "chimpanzee", "gibbon"};
-        String[] monkeyArray = {"mandril", "macaque", "capuchin", "baboon", "spider monkey", "de brazza's monkey", "grivet monkey",
-                "greater spot-nosed monkey", "gold/blue/silver monkey", "saki monkey",
-                "howler monkey", "squirrel monkey", "guenon", "tamarin", "patas monkey", "swamp monkey", "pygmy marmoset", "uakari"};
+        String[] monkeyArrayAH = {"capuchin", "guenon", "baboon", "de brazza's monkey", "grivet monkey", "howler monkey",
+                "greater spot-nosed monkey"};
+        String[] monkeyArrayI = {"saki monkey",
+                 "squirrel monkey", "mandril", "macaque", "tamarin", "patas monkey", "gold/blue/silver monkey",
+                "spider monkey", "swamp monkey", "pygmy marmoset", "uakari"};
         String[] seaAnimalArray = {"walrus", "seal", "sea lion", "manatee", "platypus", "beaver", "whale",
-                "orca/killer whale", "dolphin", "river dolphin", "hippo", "otter", "porpoise", "narwhal", "dugong",
-        "water vole"};
+                "orca/killer whale", "dolphin", "river dolphin", "hippo", "otter", "porpoise", "narwhal", "dugong"};
         String[] australianArray = {"kangaroo", "wallaby", "wombat", "koala bear", "platypus", "tasmanian devil",
                 "sugar glider/flying squirrel", "bandicoot", "cuscus", "numbat", "pademelon", "quokka", "quoll", "swiftlet"};
         String[] hornAntlerTuskArrayAH = {"addax", "antelope", "buffalo", "caribou", "cow","deer","giraffe", "gaur", "elephant", "elk",
                 "gazelle","goat"};
-        String[] hornAntlerTuskArrayI = {"water buffalo", "rhino",  "sheep", "wildebeest", "moose",  "reindeer", "wild boar",    "impala",
-                "kudu", "okapi", "markhor", "saola", "oryx", "walrus", "warthog", "yak", "zebu", "ibex", "swiftlet", "musk ox", "ox"};
+        String[] hornAntlerTuskArrayIO = {"moose","impala", "oryx", "kudu", "okapi", "markhor", "ibex", "musk ox", "ox"};
+        String[] hornAntlerTuskArrayPZ = {"saola", "walrus", "reindeer", "wild boar","warthog","water buffalo",
+                "rhino",  "sheep", "wildebeest", "yak", "zebu", "swiftlet"};
         String[] spikyArray = {"hedgehog", "armadillo", "pangolin", "porcupine", "echidna"};
-        String[] herbivoreArrayAH = {"aardvark", "horse", "hippo", "hyrax", "civet", "alpaca",  "dromedary", "donkey",
-                "camel", "goat", "fossa", "hare", "chamois", "bat", "beaver", "coati", "gerenuk"};
-        String[] herbivoreArrayI = {"raccoon", "impala", "kudu", "okapi", "opossum", "mole", "mongoose", "mule", "red panda",
-        "zonkey", "zorse", "zebra", "tapir", "llama", "pig", "sheep", "rabbit", "sloth", "stoat", "weasel", "skunk", "wolverine",
-        "peccary"};
+        String[] herbivoreArrayAG = {"aardvark", "civet", "alpaca",  "dromedary", "donkey",
+                "camel", "goat", "fossa", "chamois", "bat", "beaver", "coati", "gerenuk"};
+        String[] herbivoreArrayHM = {"horse", "hippo", "hyrax", "hare", "impala", "kudu", "llama","mole", "mongoose", "mule"};
+        String[] herbivoreArrayNR = {"raccoon",  "okapi", "opossum",  "red panda", "pig", "rabbit", "peccary"};
+        String[] herbvioreArraySZ = {"zonkey", "zorse", "zebra", "tapir",  "sheep", "sloth", "weasel", "skunk", "wolverine"};
         animalClass animalClass = new animalClass();
         String mammalType = animalClass.findAnimalClass(mammalArray);
         if (mammalType == "rodent") {
@@ -288,7 +335,7 @@ class order extends animalClass {
             if (primateType == "ape") {
                 findMammalOrder(apeArray, "apes");
             } if (primateType == "monkey") {
-                findMammalOrder(monkeyArray, "monkeys");
+                findMammalOrder(monkeyArrayAH, monkeyArrayI, "monkeys");
             } if (primateType == "lemur")  {
                 findMammalOrder("lemur");
             } if (primateType == "tarsier") {
@@ -302,7 +349,7 @@ class order extends animalClass {
             findMammalOrder(australianArray, "australian mammals");
         }
         if (mammalType == "animal with horns, antlers, or tusks") {
-            findMammalOrder(hornAntlerTuskArrayAH, hornAntlerTuskArrayI, "tusked, horned, or antlered mammals");
+            findMammalOrder(hornAntlerTuskArrayAH, hornAntlerTuskArrayIO, hornAntlerTuskArrayPZ, "tusked, horned, or antlered mammal");
         }
         if (mammalType == "spiky or armored animal") {
             findMammalOrder(spikyArray, "spiky or armored mammals");
@@ -319,12 +366,12 @@ class order extends animalClass {
             if (carnivoreType == "bear type") {
                 findMammalOrder(bearTypeArray, "bears");
             }
-            if (carnivoreType == "other") {
-                findMammalOrder(otherArrayAH, otherArrayI, "mammals");
+            else {
+                findMammalOrder(otherArrayAH, otherArrayI, "carnivore");
             }
 
         } if (mammalType == "herbivore (or omnivore, or not one of the above)") {
-                findMammalOrder(herbivoreArrayAH, herbivoreArrayI, "herbivores");
+                findMammalOrder(herbivoreArrayAG, herbivoreArrayHM, herbivoreArrayNR, herbvioreArraySZ, "herbivores");
         }
     }
 
@@ -341,7 +388,7 @@ class QuestionCount {
     public static void printQuestionNum() {
         getQuestionNum();
         System.out.println("                                        Question number: " + questionNum);
-        if (questionNum == 20) {
+        if (questionNum > 20) {
             System.out.println("That's 20 questions. You got me.");
         }
     }
