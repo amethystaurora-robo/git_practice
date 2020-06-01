@@ -13,7 +13,11 @@ class myClass implements Runnable {
     Thread thread;
     @Override
     public void run() {
-        
+        System.out.println("I am a happy alien.");
+    }
+    public static void main(String[] args) {
+        Thread myThread = new Thread();
+        myThread.run();
     }
 
 }
