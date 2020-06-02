@@ -27,11 +27,19 @@ class MyGeneric <T, V> {
     public void setValtwo(V valtwo) {
         this.valtwo = valtwo;
     }
+
+    public void printVals(T valOne, V valtwo) {
+        System.out.println(valOne + " " +  valtwo);
+    }
 }
 
 class RunGenerics {
     public static void main(String[] args) {
-        
+        MyGeneric myGeneric = new MyGeneric();
+        MyGeneric myGeneric1 = new MyGeneric();
+        myGeneric.printVals(5, "five");
+        myGeneric1.printVals("five", 5);
+
     }
 }
 
