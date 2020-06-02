@@ -8,3 +8,30 @@ package labs_examples.generics.labs;
  *          dynamic usage.
  */
 
+class MyGeneric <T, V> {
+    T valOne;
+    V valtwo;
+
+    public T getValOne() {
+        return valOne;
+    }
+
+    public void setValOne(T valOne) {
+        this.valOne = valOne;
+    }
+
+    public V getValtwo() {
+        return valtwo;
+    }
+
+    public void setValtwo(V valtwo) {
+        this.valtwo = valtwo;
+    }
+}
+
+class RunGenerics {
+    public static void main(String[] args) {
+        
+    }
+}
+
