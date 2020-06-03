@@ -1,7 +1,7 @@
 package labs_examples.generics.labs;
 
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Generics Exercise 3:
@@ -17,3 +17,27 @@ import java.util.Collection;
  *      4) Write a generic method to find the largest element within the range (begin, end) of a list.
  *
  */
+
+class BoundedGenerics {
+    public static void main(String[] args) {
+        BoundedGenerics boundedGenerics = new BoundedGenerics();
+        boundedGenerics.returnSum(5, 5.5);
+
+    }
+
+    public <T extends Number> double returnSum(T firstArg, T secondArg) {
+        double sum = 0.0;
+        sum = firstArg.doubleValue() + secondArg.doubleValue();
+        return sum;
+    }
+
+    public <V extends Collection> int returnNum(V collection) {
+        int totalElements = 0;
+        for(Object c : collection) {
+            totalElements++;
+        }
+        return totalElements;
+    }
+
+
+        }
