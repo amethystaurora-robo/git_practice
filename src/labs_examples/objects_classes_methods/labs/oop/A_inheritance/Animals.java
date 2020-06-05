@@ -1,6 +1,7 @@
 package labs_examples.objects_classes_methods.labs.oop.A_inheritance;
 
 import java.util.*;
+import java.util.Random;
 
 public class Animals {
     boolean isVertebrate = true;
@@ -40,8 +41,19 @@ public class Animals {
         return b;
     }
 
+    public void printRandomFacts(String[] factArray, String animalType) {
+        Random rand = new Random();
+        System.out.println("Did you know? A " + animalType + factArray[rand.nextInt(15)]);
+    }
+
     public String findMammalOrder(String[] animalList, String animalType) {
         String classification = "";
+        String[] randomFactArray = {"'s heart is located on its head", "can sleep for 3 years", "'s fingerprints" +
+                " is so indistinguishable from humans that they have been confused at crime scenes", " has 4 noses",
+        " is the only mammal that can't jump", " becomes hypnotized when having its belly rubbed", " takes two weeks to digest food",
+        " always turns left when leaving its home", " has no vocal chords", " can't fart", " cannot vomit", " is so small " +
+                "when born it can be held in the palm of one's hand", " can run faster than horses", " can drown", " sings more than" +
+                "2000 times a day", " also undergoes menopause", " can sleep standing up, but only dream while lying down"};
         for (int i = 0; i < animalList.length; i++) {
 
             System.out.println("Is it a " + animalList[i] + "?");
@@ -50,6 +62,7 @@ public class Animals {
             if (getUserInput().equals("yes")) {
                 classification = animalList[i];
                 System.out.println("Cool. I win.");
+                printRandomFacts(randomFactArray, classification);
                 break;
             } else if (getUserInput().equalsIgnoreCase("no")) {
                 System.out.println("That's all the " + animalType + " I know. You win.");
