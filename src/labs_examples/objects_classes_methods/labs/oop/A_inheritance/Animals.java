@@ -43,17 +43,20 @@ public class Animals {
 
     public void printRandomFacts(String[] factArray, String animalType) {
         Random rand = new Random();
-        System.out.println("Did you know? A " + animalType + factArray[rand.nextInt(15)]);
+        System.out.println("Did you know? A " + animalType + factArray[rand.nextInt(24)]);
     }
 
     public String findMammalOrder(String[] animalList, String animalType) {
         String classification = "";
         String[] randomFactArray = {"'s heart is located on its head", "can sleep for 3 years", "'s fingerprints" +
-                " is so indistinguishable from humans that they have been confused at crime scenes", " has 4 noses",
+                " are so indistinguishable from humans that they have been confused at crime scenes", " has 4 noses",
         " is the only mammal that can't jump", " becomes hypnotized when having its belly rubbed", " takes two weeks to digest food",
         " always turns left when leaving its home", " has no vocal chords", " can't fart", " cannot vomit", " is so small " +
-                "when born it can be held in the palm of one's hand", " can run faster than horses", " can drown", " sings more than" +
-                "2000 times a day", " also undergoes menopause", " can sleep standing up, but only dream while lying down"};
+                " when born it can be held in the palm of one's hand", " can run faster than horses", " can drown", " sings more than" +
+                "2000 times a day", " also undergoes menopause", " can sleep standing up, but only dream while lying down",
+        " doesn't like to be poked with a stick", " likes belly rubs", " wants you to know you're not alone", " is taller than you" +
+                "could ever be", " couldn't hurt a fly", " has hopes and dreams", " can't do math", " doesn't know 5x5",
+                " has more genes than you do"};
         for (int i = 0; i < animalList.length; i++) {
 
             System.out.println("Is it a " + animalList[i] + "?");
