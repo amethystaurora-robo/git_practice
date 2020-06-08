@@ -7,6 +7,7 @@ public class DogKinds {
         "irish setter", "cocker spaniel", "shi-tzu", "keeshond", "corgi", "collie", "border collie", "beagle", "rottweiler",
         "boxer", "Old English sheepdog", "German shorthaired pointer", "basset hound", "bloodhound", "basenji", "Chinese crested",
         "west highland white terrier", "yorkshire terrier", "springer spaniel", "french bulldog", "pharaoh hound", "tibetan mastiff",
-        "great dane", "brittany", "chihuahua", "maltese", "shar-pei", "akita", "shiba inu"};
+        "great dane", "brittany", "chihuahua", "maltese", "shar-pei", "akita", "shiba inu", "cairn terrier", "doberman", "afghan hound",
+        "miniature pinscher", "giant schnauzer", "ibizan hound", "airedale terrier", "basenji", "komodor"};
     }
 }
