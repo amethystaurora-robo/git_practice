@@ -8,6 +8,9 @@ public class DogKinds {
         "boxer", "Old English sheepdog", "German shorthaired pointer", "basset hound", "bloodhound", "basenji", "Chinese crested",
         "west highland white terrier", "yorkshire terrier", "springer spaniel", "french bulldog", "pharaoh hound", "tibetan mastiff",
         "great dane", "brittany", "chihuahua", "maltese", "shar-pei", "akita", "shiba inu", "cairn terrier", "doberman", "afghan hound",
-        "miniature pinscher", "giant schnauzer", "ibizan hound", "airedale terrier", "basenji", "komodor"};
+        "miniature pinscher", "giant schnauzer", "ibizan hound", "airedale terrier", "basenji", "komodor", "maltese", "dachsund",
+        "chow chow", "cane corso", "bernese mountain dog", "bichon frise", "newfoundland", "cavalier king charles spaniel",
+        "st bernard", "jack russell terrier", "sarabi dog", "havanese dog", "greyhound", "dalmatian", "staffordshire terrier",
+        "papillon", "irish wolfhound", "kangal shepherd dog"};
     }
 }
