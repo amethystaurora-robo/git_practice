@@ -1,5 +1,8 @@
 package labs_examples.lambdas.labs;
 
+import java.util.function.BiFunction;
+import java.util.function.Predicate;
+
 /**
  * Lambdas Exercise 1:
  *
@@ -23,3 +26,60 @@ package labs_examples.lambdas.labs;
  *
  *
  */
+
+class Lambdas {
+    public static void main(String[] args) {
+        ExampleInterface exInterface = new ExampleInterface() {
+            @Override
+            public void run() {
+                System.out.println("This is a regularly scheduled test of the anonymous inner class system.");
+            }
+        };
+
+        AbstractInterface abstractInterface = new AbstractInterface() {
+            @Override
+            public int run(int runTime) {
+                return runTime;
+            }
+        };
+
+        DoubleInterface doubleInterface = new DoubleInterface() {
+            @Override
+            public double run(double x, double y) {
+                return x*y;
+            }
+        };
+
+        exInterface.run();
+        abstractInterface.run(5);
+        doubleInterface.run(5.5, 5.6);
+    }
+    @FunctionalInterface
+    public interface ExampleInterface {
+        public void run();
+    }
+
+    @FunctionalInterface
+    public interface AbstractInterface {
+        public int run(int runTime);
+    }
+
+    @FunctionalInterface
+    public interface DoubleInterface {
+        public double run(double x, double y);
+    }
+
+
+    ExampleInterface exampleInterface = () -> {System.out.println("This is a regularly scheduled test of the emergency alert" +
+            "system.");};
+
+    AbstractInterface abstractInterface = (int runTime) -> {return runTime;};
+
+    DoubleInterface doubleInterface = (double x, double y) -> {return x*y;};
+
+    //built-in interfaces
+    BiFunction<Double, Double, Double> addDoubles = (x, y) -> {return x+y;};
+    Predicate<String> shorterThan = i -> (i.length() < 5);
+
+}
+
