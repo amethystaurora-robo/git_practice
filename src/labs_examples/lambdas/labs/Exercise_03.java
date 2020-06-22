@@ -41,7 +41,7 @@ class MethodReferences {
 
         //constructor reference
         UserGenerator userGenerator = User :: new;
-        User me = userGenerator.createUser(2, 50);
+        User me = userGenerator.createUser(7, 50);
         me.toString();
 
     }
