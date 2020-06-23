@@ -54,7 +54,7 @@ public class Animals {
         " always turns left when leaving its home", " has no vocal chords", " can't fart", " cannot vomit", " is so small " +
                 " when born it can be held in the palm of one's hand", " can run faster than horses", " can drown", " sings more than" +
                 "2000 times a day", " also undergoes menopause", " can sleep standing up, but only dream while lying down",
-        " doesn't like to be poked with a stick", " likes belly rubs", " wants you to know you're not alone", " is taller than you" +
+        " doesn't like to be poked with a stick", " likes belly rubs", " out there wants you to know you're not alone", " is taller than you" +
                 "could ever be", " couldn't hurt a fly", " has hopes and dreams", " can't do math", " doesn't know 5x5",
                 " has more genes than you do"};
         for (int i = 0; i < animalList.length; i++) {
