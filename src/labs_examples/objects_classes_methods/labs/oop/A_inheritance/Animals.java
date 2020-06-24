@@ -138,7 +138,12 @@ public class Animals {
     public String findMammalOrder(String[] animalList) {
         String animalType = "";
         for (int i = 0; i < animalList.length; i++) {
-            System.out.println("Is it a " + animalList[i] + "?");
+            if (animalList[i].startsWith("a")|| animalList[i].startsWith("e") || animalList[i].startsWith("i") ||
+                    animalList[i].startsWith("o") || animalList[i].startsWith("u")) {
+                System.out.println("Is it an " + animalList[i] + "?");}
+            else {
+                System.out.println("Is it a " + animalList[i] + "?");
+            }
             QuestionCount questionCount = new QuestionCount();
             questionCount.printQuestionNum();
             if (getUserInput().equals("yes")) {
@@ -162,6 +167,7 @@ public class Animals {
     public void printResult() {
         System.out.println("That's all the birds I know. You win");
     }
+
 
 }
 
