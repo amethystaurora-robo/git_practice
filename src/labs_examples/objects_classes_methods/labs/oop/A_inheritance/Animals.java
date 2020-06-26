@@ -138,7 +138,7 @@ public class Animals {
     public String findMammalOrder(String[] animalList) {
         String animalType = "";
         for (int i = 0; i < animalList.length; i++) {
-            if (animalList[i].|| animalList[i].startsWith("e") || animalList[i].startsWith("i") ||
+            if (animalList[i].startsWith("a")|| animalList[i].startsWith("e") || animalList[i].startsWith("i") ||
                     animalList[i].startsWith("o") || animalList[i].startsWith("u")) {
                 System.out.println("Is it an " + animalList[i] + "?");}
             else {
