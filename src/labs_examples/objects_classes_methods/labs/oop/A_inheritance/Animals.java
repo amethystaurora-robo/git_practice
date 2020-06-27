@@ -3,7 +3,7 @@ package labs_examples.objects_classes_methods.labs.oop.A_inheritance;
 import java.util.*;
 import java.util.Random;
 
-public class Animals {
+public class Animals<animalType> {
     boolean isVertebrate = true;
 
 
@@ -59,7 +59,7 @@ public class Animals {
                 " has more genes than you do"};
         for (int i = 0; i < animalList.length; i++) {
 
-            System.out.println("Is it a " + animalList[i] + "?");
+            System.out.println("Is it " + articleDeterminer(animalList[i]) + " " + animalList[i] + "?");
             QuestionCount questionCount = new QuestionCount();
             questionCount.printQuestionNum();
             if (getUserInput().equals("yes")) {
@@ -138,12 +138,7 @@ public class Animals {
     public String findMammalOrder(String[] animalList) {
         String animalType = "";
         for (int i = 0; i < animalList.length; i++) {
-            if (animalList[i].startsWith("a")|| animalList[i].startsWith("e") || animalList[i].startsWith("i") ||
-                    animalList[i].startsWith("o") || animalList[i].startsWith("u")) {
-                System.out.println("Is it an " + animalList[i] + "?");}
-            else {
-                System.out.println("Is it a " + animalList[i] + "?");
-            }
+            System.out.println("Is it a" + animalList[i] + "?");
             QuestionCount questionCount = new QuestionCount();
             questionCount.printQuestionNum();
             if (getUserInput().equals("yes")) {
@@ -162,6 +157,18 @@ public class Animals {
     public String findMammalOrder(String animalType) {
         System.out.println("Cool. So it's a " + animalType);
         return animalType;
+    }
+
+    public String articleDeterminer(String animalList) {
+        String article = "a";
+        if(animalList.startsWith("a") || animalList.startsWith("e")|| animalList.startsWith("i")
+                || animalList.startsWith("o") || animalList.startsWith("u")) {
+            article = "an";
+        }
+        else {
+            article = "a";
+        }
+        return article;
     }
 
     public void printResult() {
