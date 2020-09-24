@@ -138,7 +138,7 @@ public class Animals<animalType> {
     public String findMammalOrder(String[] animalList) {
         String animalType = "";
         for (int i = 0; i < animalList.length; i++) {
-            System.out.println("Is it a" + animalList[i] + "?");
+            System.out.println("Is it a " + animalList[i] + "?");
             QuestionCount questionCount = new QuestionCount();
             questionCount.printQuestionNum();
             if (getUserInput().equals("yes")) {
