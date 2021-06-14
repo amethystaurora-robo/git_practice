@@ -1,107 +1,185 @@
-package labs_examples.objects_classes_methods.labs.oop.A_inheritance;
-//functions of trash collection app
-//add a transaction
-//select from a dropdown menu
-//pie chart calculator
-//info buttons
-//history
-/* function add transaction
- * get user input
- * select from dropdown menu
- * save user input
- * display under history tab
- * info button
- * on mouse click
- * get info from database
- * display trash info
- * function calculate percentages
- * math language
- * function order categories by percentage, low to high
- *
- * front end
- * add transaction requires + button
- * user input requires input box
- * dropdown menu
- * mini graphics for items
- * tiny i for info
- * tabular history and pie chart
- * order of percentages affects color of pie chart
- * display pie chart
- *
- * BASIC BUDGETING APP TO START
- * GET USER INPUT
- * USER CHOOSES FROM ARRAY OF OPTIONS
- * (TO DO: CREATE TRASH ARRAY)
- * TRASH ARRAY MATCHES WITH CSV FILE IN DIFFERENT CATEGORIES
- * USER INPUT SAVED TO FILE
- * VIEW USER INPUT FILE IN MAIN METHOD
- * AUTOMATIC CALCULATOR WRITES EQUATION FOR PERCENTAGES OF TRASH TYPE
- *
- * */
-import java.sql.*;
+package labs_examples.objects_classes_methods.labs.objects;
+
+
+
 import java.util.*;
-import java.lang.Math;
 import java.io.*;
-import java.nio.*;
 
-public class TrashCollection {
+public class TrashCollection<trashTypes> {
+    String[] trashTypes = {"tissue paper or napkins", "paper plates", "printer paper", "cigarette box",
+            "q-tips", "paper takeaway cups/boxes", "| cardboard box", "egg carton",
+            "| takeaway containers/cup/microwavable food tray", "plastic bottles",
+            "plastic container such as peanut butter/cooking oil/handsoap/window cleaner", "| plastic toys",
+            "shampoo/conditioner/detergent bottle/motor oil container/chemical container",
+            "other cosmetics containers", "grocery bag", "cereal box liner/other food liners",
+            "reusable water bottle", "milk jug 17", "| protective clothing (biohazard gear/beekeeper suit)",
+            "shower curtain", "tent", "bandage", "| 22 juice box", "tupperware type containers",
+            "ziploc baggy", "saran or other plastic wrap/bubble wrap", "wrapping paper",
+            "plastic bag from amazon or other delivery service", "|28 bottle cap", "chips bag", "plastic straw",
+            "plastic toothbrush or hairbrush", "diapers", "sanitary pads or tampons", "plastic tags",
+            "plastic razor handle or other handled device", "| 36styrofoam", "packing peanuts", "|38 balloon",
+            "condom", "| 40cotton clothing", "cotton balls", "wool clothing", "silk clothing", "linen or hemp clothing",
+            "polyester clothing", "nylon", "viscose or rayon clothing", "| 48leather", "| 49yard waste", "| 50wood",
+            "| 51glass", "| 52ashes", "| 53electronics", "| 54metal", "aluminum cans", "tin cans", "aerosol cans",
+            "metal bottle caps", "aluminum foil", "lighters", "| 61receipts", "batteries",
+            "lightbulbs", "oil", "pesticides", "|66 tires", "rubber shoes", "rubber pet toys", "rubber bands", "gum", "erasers",
+            "elastic material (such as in hairties or pants)"};
+    String[] wasteTypes = {"paper", "cardboard", "PET plastics", "HDPE plastics", "PVC plastics", "LDPE plastics",
+            "PP plastics", "polystrynene", "latex", "textiles", "leather", "yard waste", "wood", "glass", "metal",
+            "chemical waste", "ashes", "electronics", "rubber"};
+
     public static void main(String[] args) {
-        getUserInput();
+        TrashCollection trashCollection = new TrashCollection();
+        ArrayList<String> userTrash = new ArrayList<>();
+        boolean addSomething = true;
+        int userNum = trashCollection.mapWaste(trashCollection.getUserInput(addSomething));
+        String wasteCount = trashCollection.getWastetype(userNum);
+        System.out.println(wasteCount);
+        trashCollection.createUserfile(userTrash);
+
     }
 
-    public static String[] getUserInput() {
-        System.out.println("Would you like to add something?");
-        String[] userHistory = new String[0];
+    //gets user input
+    public static String getUserInput(boolean addSomething) {
+        String userInput = "";
         Scanner scanner = new Scanner(System.in);
-        boolean userChoice = false;
-        String userInput;
-        userInput = scanner.nextLine();
-        if (userInput.equalsIgnoreCase("yes")) {
-            userChoice = true;
-        } else {
-            userChoice = false;
-        }
-        while (userChoice == true) {
-            System.out.println("What did you throw away?");
-            for (int i = 0; i < userHistory.length; i++) {
-                userHistory[i] = scanner.nextLine();
+        String userAnswer = "yes";
+        while (addSomething = true) {
+            System.out.println("Do you want to add something?");
+            userAnswer = scanner.nextLine();
+            if (userAnswer.equalsIgnoreCase("yes")) {
+                addSomething = true;
+                System.out.println("What do you want to add?");
+                String userInfo = scanner.nextLine();
+                userInput = userInfo;
             }
-
+            else {
+                userAnswer = "no";
+                addSomething = false;
+                break;
+            }
         }
-        userHistory.toString();
-        return userHistory;
+        return userInput;
     }
-}
 
-
-    //TO DO: ARRANGE THIS BETTER
-    /*String[] trashList = new String[];
-    trashList = {"pesticides", "animal dung", "fertilizer", "animal bones", "food waste",
-            "sharp objects", "urine and blood samples", "discarded PPE", "microbiological cultures",
-            "used bandages", "furniture", "appliances", "electronic devices", "construction waste", "scrap metal",
-            "plastic straw", "aluminum foil", "paper plates", "napkins or tissues", "paper", "batteries", "cardboard",
-            "glass", "cans", "textiles", "shoes", "yard waste", "light bulbs", "cartons", "styrofoam", "packaging",
-            "packing peanuts", "bubble wrap", "plastic takeaway containers", "expired medications", "aerosol spray cans",
-            "paints", "tupperware containers", "shampoo/conditioner bottles", "liquid hand soap bottles", "toys", "signs",
-            "reusable water bottle", "pipes", "shopping bags", "juice bottles", "plastic film", "fishing nets", "toothbrush",
-            "egg carton", "cotton swabs, cottonballs", "sanitary pads/tampons", "detergent bottles", "diapers", "razors",
-            "balloons", "lighters", "gum", "nylon"};
-    public int calculateTrash(int trashCount) {
-        //calculate trash consumption, count number of instances in userHistory of trashlist, then make them into percentages
-        for (int j = 0; j < userHistory.length; j++) {
-            for (int i = 0; i < trashList.length; i++) {
-                boolean c = userHistory[j].equals(trashList[i]);
-                if (c == true) {
-                    trashCount++;
-                }
-                int trashCounts[] = new Array;
-
-
+    //maps user input to trash type in order to get waste type below
+    public int mapWaste(String userInput) {
+        int userNum = 0;
+        for (int i = 0; i < trashTypes.length; i++) {
+            if (trashTypes[i].equals(userInput)) {
+                userNum = i;
             }
         }
+        return userNum;
+    }
 
-        final int trashCount1 = trashCount;
-        return trashCount1;
-    }*/
+    //finds what waste the trash type maps to, counts instances of that waste
+    public String getWastetype(int userNum) {
+        String wasteType = "";
+        int PPnum = 0;
+        int HDPEnum = 0;
+        int LDPEnum = 0;
+        int PETnum = 0;
+        int rubberNum = 0;
+        int paperNum = 0;
+        int cardNum = 0;
+        int polyNum = 0;
+        int ashNum = 0;
+        int electronNum = 0;
+        int metalNum = 0;
+        int woodNum = 0;
+        int glassNum = 0;
+        int latexNum = 0;
+        int PVCnum = 0;
+        int chemNum = 0;
+        int textileNum = 0;
+        int leatherNum = 0;
+        int yardNum = 0;
+            if (userNum < 6) {
+                paperNum++;
+                wasteType = paperNum + " paper";
+            }
+            else if (userNum >= 6 && userNum < 8) {
+                cardNum++;
+                wasteType = cardNum + " cardboard";
+            }
+            else if (userNum >= 8 && userNum < 11) {
+                PETnum++;
+                wasteType = PETnum + " PET plastics";
+            }
+            else if (userNum >= 11 && userNum < 18) {
+                HDPEnum++;
+                wasteType = HDPEnum + " HDPE plastics";
+            }
+            else if (userNum >= 18 && userNum < 22) {
+                PVCnum++;
+                wasteType = PVCnum +  " PVC plastics";
+            }
+            else if (userNum >= 22 && userNum < 28) {
+                LDPEnum++;
+                wasteType = LDPEnum + " LDPE plastics";
+            }
+            else if (userNum >= 28 && userNum < 36) {
+                PPnum++;
+                wasteType = PPnum + " PP plastics";
+            }
+            else if (userNum >= 36 && userNum < 38) {
+                polyNum++;
+                wasteType = polyNum + " polystrynene";
+            }
+            else if (userNum >= 38 && userNum < 40) {
+                latexNum++;
+                wasteType = latexNum + " latex";
+            }
+            else if (userNum >= 40 && userNum < 48) {
+                textileNum++;
+                wasteType = textileNum + " textiles";
+            }
+            else if (userNum == 48) {
+                leatherNum++;
+                wasteType = leatherNum + " leather";
+            }
+            else if (userNum == 49) {
+                yardNum++;
+                wasteType = yardNum + " yard waste";
+            }
+            else if (userNum == 50) {
+                woodNum++;
+                wasteType = woodNum + " wood";
+            }
+            else if (userNum == 51) {
+                glassNum++;
+                wasteType = glassNum + " glass";
+            }
+            else if (userNum == 52) {
+                ashNum++;
+                wasteType = ashNum + " ashes";
+            }
+            else if (userNum == 53) {
+                electronNum++;
+                wasteType = electronNum + " electronics";
+            }
+            else if (userNum >= 54 && userNum < 61) {
+                metalNum++;
+                wasteType = metalNum + " metal";
+            }
+            else if (userNum >= 61 && userNum < 66) {
+                chemNum++;
+                wasteType = chemNum + " chemical waste";
+            }
+            else if (userNum > 66) {
+                rubberNum++;
+                wasteType = rubberNum + " rubber";
+            }
+        return wasteType;
+    }
 
+    //adds basic user trashtypes to array list
+    public void createUserfile(ArrayList<String> userTrash) {
+        boolean addSomething = true;
+        String userInput = getUserInput(addSomething);
+        userTrash.add(userInput);
+        System.out.println(userTrash.toString());
+    }
 
+}
